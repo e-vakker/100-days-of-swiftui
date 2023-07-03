@@ -11,12 +11,18 @@ struct ContentView: View {
     
     let tipPercentages = [10, 15, 20, 25, 0]
     
-    var totalPerPerson: Double {
-        let peopleCount = Double(numberOfPeople + 2)
+    let localCurrency = Locale.current.currency?.identifier ?? "USD"
+    
+    var grandTotal: Double {
         let tipSelection = Double(tipPercentage)
         let tipValue = checkAmount / 100 * tipSelection
-        let GrandTotal = checkAmount + tipValue
-        let amountPerPerson = GrandTotal / peopleCount
+        let grandTotal = checkAmount + tipValue
+        return grandTotal
+    }
+    
+    var totalPerPerson: Double {
+        let peopleCount = Double(numberOfPeople + 2)
+        let amountPerPerson = grandTotal / peopleCount
         return amountPerPerson
     }
     
@@ -30,11 +36,9 @@ struct ContentView: View {
         NavigationStack {
             Form {
                 Section("Amount") {
-                    TextField("Amount", value: $checkAmount, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                    TextField("Amount", value: $checkAmount, format: .currency(code: localCurrency))
                         .keyboardType(.decimalPad)
                         .focused($amountIsFocused)
-                }
-                Section {
                     Picker("Number of People", selection: $numberOfPeople) {
                         ForEach(2..<100) {
                             Text("\($0) people")
@@ -44,14 +48,18 @@ struct ContentView: View {
                 }
                 Section("How much tip do you want to leave?") {
                     Picker("Tip Percentage", selection: $tipPercentage) {
-                        ForEach(tipPercentages, id: \.self) {
+                        ForEach(0...100, id: \.self) {
                             Text($0, format: .percent)
                         }
                     }
-                    .pickerStyle(.segmented)
+                    .pickerStyle(.navigationLink)
                 }
-                Section("Total per person") {
-                    Text(totalPerPerson, format: .currency(code: Locale.current.currency?.identifier ?? "USD"))
+                Section("Amount per person") {
+                    Text(totalPerPerson, format: .currency(code: localCurrency))
+                }
+                
+                Section("Total") {
+                    Text(grandTotal, format: .currency(code: localCurrency))
                 }
                 
             }
