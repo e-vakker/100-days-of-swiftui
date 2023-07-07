@@ -57,11 +57,10 @@ struct ContentView: View {
                 Section("Amount per person") {
                     Text(totalPerPerson, format: .currency(code: localCurrency))
                 }
-                
                 Section("Total") {
                     Text(grandTotal, format: .currency(code: localCurrency))
+                        .foregroundColor(tipPercentage == 0 ? Color.red : Color.primary)
                 }
-                
             }
             .navigationTitle("We Split")
             .navigationBarTitleDisplayMode(.inline)
