@@ -16,21 +16,29 @@ struct ContentView: View {
     @State private var errorMessage = ""
     @State private var showingError = false
     
+    @State private var score = 0
+    
     var body: some View {
         NavigationStack {
-            List {
-                Section {
-                    TextField("Enter your word", text: $newWord)
-                        .textInputAutocapitalization(.never)
-                }
-                
-                Section {
-                    ForEach(userWords, id: \.self) { word in
-                        HStack {
-                            Image(systemName: "\(word.count).circle.fill")
-                            Text(word)
+            ZStack {
+                List {
+                    Section {
+                        TextField("Enter your word", text: $newWord)
+                            .textInputAutocapitalization(.never)
+                    }
+                    
+                    Section {
+                        ForEach(userWords, id: \.self) { word in
+                            HStack {
+                                Image(systemName: "\(word.count).circle.fill")
+                                Text(word)
+                            }
                         }
                     }
+                }
+                VStack {
+                    Spacer()
+                    Text("Player score: \(score)")
                 }
             }
             .navigationTitle(rootWord)
@@ -45,6 +53,11 @@ struct ContentView: View {
             } message: {
                 Text(errorMessage)
             }
+            .toolbar() {
+                Button("Start Game") {
+                    startGame()
+                }
+            }
         }
     }
     
@@ -58,6 +71,12 @@ struct ContentView: View {
             wordError(title: "Word uses already", message: "Be more original")
             return
         }
+        
+        guard isLongEnough(word: answer) else {
+            wordError(title: "Word too short", message: "Please enter a longer word")
+            return
+        }
+        
         guard isPossible(word: answer) else {
             wordError(title: "Word not possible", message: "You can't spell that word from '\(rootWord)'!")
             return
@@ -67,14 +86,18 @@ struct ContentView: View {
             return
         }
         
-        
         withAnimation() {
             userWords.insert(answer, at: 0)
+            score += answer.count + (userWords.count * 5)
         }
         newWord = ""
     }
     
     func startGame() {
+        withAnimation() {
+            score = 0
+            userWords = []
+        }
         // 1. Find the URL for start.txt in our app bundle
         if let startWordsURL = Bundle.main.url(forResource: "start", withExtension: ".txt") {
             // 2. Load start.txt into a string
@@ -92,7 +115,11 @@ struct ContentView: View {
     }
     
     func isOriginal(word: String) -> Bool {
-        !userWords.contains(word)
+        !userWords.contains(word) && word != rootWord
+    }
+    
+    func isLongEnough(word: String) -> Bool {
+        word.count > 3
     }
     
     func isPossible(word: String) -> Bool {
