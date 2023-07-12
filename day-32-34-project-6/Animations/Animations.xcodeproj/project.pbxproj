@@ -15,6 +15,11 @@
 		EC6BDCB22A5E0AB80003F218 /* CustomizingAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6BDCB12A5E0AB80003F218 /* CustomizingAnimations.swift */; };
 		EC6BDCB42A5E0B380003F218 /* AnimatingBindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6BDCB32A5E0B380003F218 /* AnimatingBindings.swift */; };
 		EC6BDCB72A5E0BFF0003F218 /* CreatingExplicitAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6BDCB62A5E0BFF0003F218 /* CreatingExplicitAnimations.swift */; };
+		EC6BDCB92A5E0CD70003F218 /* ControllingTheAnimationStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6BDCB82A5E0CD70003F218 /* ControllingTheAnimationStack.swift */; };
+		EC6BDCBB2A5F43010003F218 /* AnimatingGestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6BDCBA2A5F43010003F218 /* AnimatingGestures.swift */; };
+		EC6BDCBD2A5F4E2C0003F218 /* AnimatingGestures2.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6BDCBC2A5F4E2C0003F218 /* AnimatingGestures2.swift */; };
+		EC6BDCBF2A5F519F0003F218 /* ShowingAndHidingWithTransitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6BDCBE2A5F519F0003F218 /* ShowingAndHidingWithTransitions.swift */; };
+		EC6BDCC12A5F541F0003F218 /* BuildingCustomTransitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6BDCC02A5F541F0003F218 /* BuildingCustomTransitions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +32,11 @@
 		EC6BDCB12A5E0AB80003F218 /* CustomizingAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizingAnimations.swift; sourceTree = "<group>"; };
 		EC6BDCB32A5E0B380003F218 /* AnimatingBindings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatingBindings.swift; sourceTree = "<group>"; };
 		EC6BDCB62A5E0BFF0003F218 /* CreatingExplicitAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingExplicitAnimations.swift; sourceTree = "<group>"; };
+		EC6BDCB82A5E0CD70003F218 /* ControllingTheAnimationStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllingTheAnimationStack.swift; sourceTree = "<group>"; };
+		EC6BDCBA2A5F43010003F218 /* AnimatingGestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatingGestures.swift; sourceTree = "<group>"; };
+		EC6BDCBC2A5F4E2C0003F218 /* AnimatingGestures2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatingGestures2.swift; sourceTree = "<group>"; };
+		EC6BDCBE2A5F519F0003F218 /* ShowingAndHidingWithTransitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowingAndHidingWithTransitions.swift; sourceTree = "<group>"; };
+		EC6BDCC02A5F541F0003F218 /* BuildingCustomTransitions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingCustomTransitions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +77,11 @@
 				EC6BDCB12A5E0AB80003F218 /* CustomizingAnimations.swift */,
 				EC6BDCB32A5E0B380003F218 /* AnimatingBindings.swift */,
 				EC6BDCB62A5E0BFF0003F218 /* CreatingExplicitAnimations.swift */,
+				EC6BDCB82A5E0CD70003F218 /* ControllingTheAnimationStack.swift */,
+				EC6BDCBA2A5F43010003F218 /* AnimatingGestures.swift */,
+				EC6BDCBC2A5F4E2C0003F218 /* AnimatingGestures2.swift */,
+				EC6BDCBE2A5F519F0003F218 /* ShowingAndHidingWithTransitions.swift */,
+				EC6BDCC02A5F541F0003F218 /* BuildingCustomTransitions.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -149,12 +164,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC6BDCBD2A5F4E2C0003F218 /* AnimatingGestures2.swift in Sources */,
+				EC6BDCB92A5E0CD70003F218 /* ControllingTheAnimationStack.swift in Sources */,
 				EC6BDCB72A5E0BFF0003F218 /* CreatingExplicitAnimations.swift in Sources */,
 				EC6BDCA42A5DFA070003F218 /* ContentView.swift in Sources */,
 				EC6BDCB22A5E0AB80003F218 /* CustomizingAnimations.swift in Sources */,
+				EC6BDCBB2A5F43010003F218 /* AnimatingGestures.swift in Sources */,
 				EC6BDCB02A5E09DF0003F218 /* CreatingImplicitAnimations.swift in Sources */,
+				EC6BDCC12A5F541F0003F218 /* BuildingCustomTransitions.swift in Sources */,
 				EC6BDCA22A5DFA070003F218 /* AnimationsApp.swift in Sources */,
 				EC6BDCB42A5E0B380003F218 /* AnimatingBindings.swift in Sources */,
+				EC6BDCBF2A5F519F0003F218 /* ShowingAndHidingWithTransitions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
