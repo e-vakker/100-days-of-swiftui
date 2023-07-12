@@ -20,16 +20,14 @@ struct ContentView: View {
     @State private var userScore = 0
     @State private var gameCount = 0
     
+    @State private var animationAmount = 0.0
+    @State private var opacity = 1.0
+    @State private var countryTapped = 0
+    @State private var scale = 1.0
+    
     var body: some View {
         ZStack {
-            RadialGradient(stops: [
-                .init(color: Color(red: 0.1, green: 0.2, blue: 0.45), location: 0.3),
-                .init(color: Color(red: 0.76, green: 0.15, blue: 0.26), location: 0.3),
-            ],
-                           center: .top,
-                           startRadius: 200,
-                           endRadius: 400)
-            .ignoresSafeArea()
+            BackgroundGradient()
             VStack {
                 Text("Guess the Flag")
                     .font(.largeTitle.weight(.bold))
@@ -44,9 +42,25 @@ struct ContentView: View {
                     }
                     ForEach(0..<3) { number in
                         Button {
+                            countryTapped = number
                             flagTapped(number)
+                            withAnimation() {
+                                animationAmount += 360
+                            }
+                            withAnimation(.easeOut(duration: 0.50)) {
+                                opacity = 0.25
+                            }
+                            withAnimation(.linear(duration: 0.50)) {
+                                scale = 0.0
+                            }
                         } label: {
-                            FlagImage(сountry: countries[number])
+                            FlagImage(country: countries[number])
+                                .rotation3DEffect(
+                                    countryTapped == number ? .degrees(animationAmount) : .degrees(0),
+                                    axis: (x: 0, y: 1, z: 0)
+                                )
+                                .opacity(countryTapped != number ? opacity : 1.0)
+                                .scaleEffect(countryTapped != number ? scale : 1.0)
                         }
                     }
                 }
@@ -97,6 +111,8 @@ struct ContentView: View {
     }
     
     func askQuestion() {
+        opacity = 1
+        scale = 1
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
     }

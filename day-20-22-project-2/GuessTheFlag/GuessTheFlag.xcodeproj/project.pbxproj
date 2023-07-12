@@ -12,6 +12,7 @@
 		EC465E782A5613A9003F9842 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC465E772A5613A9003F9842 /* Assets.xcassets */; };
 		EC465E7B2A5613A9003F9842 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC465E7A2A5613A9003F9842 /* Preview Assets.xcassets */; };
 		EC465E9C2A582F48003F9842 /* FlagImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC465E9B2A582F47003F9842 /* FlagImage.swift */; };
+		EC6BDCC52A5F5ADF0003F218 /* BackgroundGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6BDCC42A5F5ADF0003F218 /* BackgroundGradient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		EC465E772A5613A9003F9842 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC465E7A2A5613A9003F9842 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EC465E9B2A582F47003F9842 /* FlagImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagImage.swift; sourceTree = "<group>"; };
+		EC6BDCC42A5F5ADF0003F218 /* BackgroundGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundGradient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 				EC465E772A5613A9003F9842 /* Assets.xcassets */,
 				EC465E792A5613A9003F9842 /* Preview Content */,
 				EC465E9B2A582F47003F9842 /* FlagImage.swift */,
+				EC6BDCC42A5F5ADF0003F218 /* BackgroundGradient.swift */,
 			);
 			path = GuessTheFlag;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC465E762A5613A7003F9842 /* ContentView.swift in Sources */,
+				EC6BDCC52A5F5ADF0003F218 /* BackgroundGradient.swift in Sources */,
 				EC465E9C2A582F48003F9842 /* FlagImage.swift in Sources */,
 				EC465E742A5613A7003F9842 /* GuessTheFlagApp.swift in Sources */,
 			);

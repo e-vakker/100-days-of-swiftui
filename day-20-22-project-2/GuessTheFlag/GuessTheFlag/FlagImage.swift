@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct FlagImage: View {
-    let сountry: String
+    let country: String
     
     var body: some View {
-        Image(сountry)
+        Image(country)
             .renderingMode(.original)
             .clipShape(Capsule())
             .shadow(radius: 5)
@@ -20,6 +20,6 @@ struct FlagImage: View {
 
 struct FlagImage_Previews: PreviewProvider {
     static var previews: some View {
-        FlagImage(сountry: "Estonia")
+        FlagImage(country: "Estonia")
     }
 }
