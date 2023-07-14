@@ -12,6 +12,7 @@
 		EC6BDCD72A60A2E50003F218 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC6BDCD62A60A2E50003F218 /* Assets.xcassets */; };
 		EC6BDCDA2A60A2E50003F218 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC6BDCD92A60A2E50003F218 /* Preview Assets.xcassets */; };
 		EC6BDCE12A60A3CF0003F218 /* GameTypeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6BDCE02A60A3CF0003F218 /* GameTypeSelectionView.swift */; };
+		EC6BDCE32A617BCE0003F218 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6BDCE22A617BCE0003F218 /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		EC6BDCD62A60A2E50003F218 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC6BDCD92A60A2E50003F218 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EC6BDCE02A60A3CF0003F218 /* GameTypeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTypeSelectionView.swift; sourceTree = "<group>"; };
+		EC6BDCE22A617BCE0003F218 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 				EC6BDCD62A60A2E50003F218 /* Assets.xcassets */,
 				EC6BDCD82A60A2E50003F218 /* Preview Content */,
 				EC6BDCE02A60A3CF0003F218 /* GameTypeSelectionView.swift */,
+				EC6BDCE22A617BCE0003F218 /* Model.swift */,
 			);
 			path = Edutainment;
 			sourceTree = "<group>";
@@ -143,6 +146,7 @@
 				EC6BDCE12A60A3CF0003F218 /* GameTypeSelectionView.swift in Sources */,
 				EC6BDCD52A60A2E30003F218 /* ContentView.swift in Sources */,
 				EC6BDCD32A60A2E30003F218 /* EdutainmentApp.swift in Sources */,
+				EC6BDCE32A617BCE0003F218 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

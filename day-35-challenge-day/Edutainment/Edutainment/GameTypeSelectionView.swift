@@ -12,8 +12,9 @@ struct IndigoButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .padding(15)
+            .fontWeight(.bold)
             .frame(maxWidth: .infinity)
-            .background(.indigo)
+            .background(LinearGradient(colors: [.indigo, .indigo.opacity(0.60)], startPoint: .leading, endPoint: .trailing))
             .foregroundColor(.white)
             .clipShape(Capsule())
             .opacity(configuration.isPressed ? 0.80 : 1.0)
@@ -38,88 +39,110 @@ extension View {
 
 struct GameTypeSelectionView: View {
     
-    enum GameTypes: String, CaseIterable {
-        case multiplication = "✖️"
-        case division = "➗"
-        case addition = "➕"
-        case subtraction = "➖"
-        
-        var displayTitle: String {
-            var title: String = ""
-            switch self {
-            case .addition:
-                title = "Addition"
-            case .multiplication:
-                title = "Multiplication"
-            case .division:
-                title = "Division"
-            case .subtraction:
-                title = "Subtraction"
-            }
-            return "\(title) mode"
-        }
-    }
-    
-    enum TotalGames: Int, CaseIterable {
-        case five = 5
-        case ten = 10
-        case twenty = 20
-        
-        var displayText: String {
-            "\(self.rawValue) games"
-        }
-    }
-    
-    enum GameDifficulty: String, CaseIterable {
-        case easy = "Easy"
-        case medium = "Medium"
-        case hard = "Hard"
-        
-        var displayText: String {
-            "\(self.rawValue) difficulty"
-        }
-    }
-    
     @State private var gameType: GameTypes = .addition
     @State private var selectedGameCount: TotalGames = .five
     @State private var selectedDifficulty: GameDifficulty = .medium
+    @State private var selectedAvatar: Int = 22
+    @State private var selectedName: String = ""
     
+    @State private var showName = false
     
     var body: some View {
         NavigationStack() {
             VStack(spacing: 20) {
-                Text("Select game type")
+                Text("Your avatar")
                     .font(.largeTitle)
                     .titleIndigoStyle()
-                Text("\(gameType.displayTitle)")
-                    .titleIndigoStyle()
-                Picker("Select game type", selection: $gameType) {
-                    ForEach(GameTypes.allCases, id: \.self) { type in
-                        Text(type.rawValue)
+                HStack {
+                    Button(action: { changeAvatar(next: false) }) {
+                        HStack {
+                            Image(systemName: "chevron.left")
+                                .foregroundColor(.indigo)
+                                .imageScale(.large)
+                        }
+                    }
+                    avatar[selectedAvatar]
+                        .resizable()
+                        .renderingMode(.original)
+                        .aspectRatio(contentMode: .fit)
+                        .padding([.trailing, .leading], 75)
+                        .frame(maxHeight: 200)
+                    Button(action: { changeAvatar(next: true )}) {
+                        HStack {
+                            Image(systemName: "chevron.right")
+                                .foregroundColor(.indigo)
+                                .imageScale(.large)
+                        }
                     }
                 }
-                .pickerStyle(.segmented)
-                Text("\(selectedGameCount.displayText)")
-                    .titleIndigoStyle()
-                Picker("Select game count", selection: $selectedGameCount) {
-                    ForEach(TotalGames.allCases, id: \.self) { gameCount in
-                        Text("\(gameCount.rawValue)")
+                VStack {
+                    if showName {
+                        Text("Your name is \(selectedName)")
+                            .titleIndigoStyle()
+                            .transition(.asymmetric(insertion: .move(edge: .top), removal: .scale))
                     }
+                    TextField("Your name", text: $selectedName)
+                        .padding()
+                        .textFieldStyle(.plain)
+                        .background(RoundedRectangle(cornerRadius: 20)
+                            .strokeBorder(.indigo))
+                        .autocorrectionDisabled()
                 }
-                .pickerStyle(.segmented)
-                Text(selectedDifficulty.displayText)
-                    .titleIndigoStyle()
-                Picker("Select Difficulty", selection: $selectedDifficulty) {
-                    ForEach(GameDifficulty.allCases, id: \.self) { difficult in
-                        Text("\(difficult.rawValue)")
+                VStack {
+                    Text("\(gameType.displayTitle)")
+                        .titleIndigoStyle()
+                    Picker("Select game type", selection: $gameType) {
+                        ForEach(GameTypes.allCases, id: \.self) { type in
+                            Text(type.rawValue)
+                        }
                     }
+                    .pickerStyle(.segmented)
                 }
-                .pickerStyle(.segmented)
+                VStack {
+                    Text("\(selectedGameCount.displayText)")
+                        .titleIndigoStyle()
+                    Picker("Select game count", selection: $selectedGameCount) {
+                        ForEach(TotalGames.allCases, id: \.self) { gameCount in
+                            Text("\(gameCount.rawValue)")
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                }
+                VStack {
+                    Text(selectedDifficulty.displayText)
+                        .titleIndigoStyle()
+                    Picker("Select Difficulty", selection: $selectedDifficulty) {
+                        ForEach(GameDifficulty.allCases, id: \.self) { difficult in
+                            Text("\(difficult.rawValue)")
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                }
                 Spacer()
-                Button("Start Game") { }
+                NavigationLink("Start Game", destination: ContentView(game:
+                                                                        Game(games: selectedGameCount,
+                                                                             difficulty: selectedDifficulty,
+                                                                             type: gameType,
+                                                                             name: selectedName,
+                                                                             avatar: avatar[selectedAvatar])))
                     .buttonStyle(IndigoButton())
             }
             .padding()
+        }
+        .onChange(of: selectedName) { name in
+            withAnimation(.linear) {
+                if name.count >= 1 {
+                    showName = true
+                } else {
+                    showName = false
+                }
+            }
+        }
+    }
+    
+    func changeAvatar(next: Bool) {
+        withAnimation(.linear) {
+            selectedAvatar = next ? (selectedAvatar + 1) % avatar.count : (selectedAvatar - 1 + avatar.count) % avatar.count
         }
     }
 }

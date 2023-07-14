@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     
+    var game: Game
+    
     var body: some View {
         NavigationStack {
             List {
@@ -17,12 +19,13 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("Edutainment")
+//            .navigationBarBackButtonHidden(true)
         }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(game: Game(games: .twenty, difficulty: .medium, type: .addition, name: "Eva", avatar: Image("dog")))
     }
 }
