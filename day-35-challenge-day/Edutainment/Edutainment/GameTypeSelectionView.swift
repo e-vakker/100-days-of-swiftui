@@ -8,37 +8,7 @@
 import SwiftUI
 
 
-struct IndigoButton: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .padding(15)
-            .fontWeight(.bold)
-            .frame(maxWidth: .infinity)
-            .background(LinearGradient(colors: [.indigo, .indigo.opacity(0.60)], startPoint: .leading, endPoint: .trailing))
-            .foregroundColor(.white)
-            .clipShape(Capsule())
-            .opacity(configuration.isPressed ? 0.80 : 1.0)
-            .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
-    }
-}
-
-struct TitleIndigo: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .font(.title3)
-            .fontWeight(.medium)
-            .foregroundColor(.indigo)
-    }
-}
-
-extension View {
-    func titleIndigoStyle() -> some View {
-        modifier(TitleIndigo())
-    }
-}
-
 struct GameTypeSelectionView: View {
-    
     @State private var gameType: GameTypes = .addition
     @State private var selectedGameCount: TotalGames = .five
     @State private var selectedDifficulty: GameDifficulty = .medium
@@ -47,31 +17,35 @@ struct GameTypeSelectionView: View {
     
     @State private var showName = false
     
+    @FocusState private var isNameFocused: Bool
+    
     var body: some View {
-        NavigationStack() {
+        NavigationStack {
             VStack(spacing: 20) {
-                Text("Your avatar")
-                    .font(.largeTitle)
-                    .titleIndigoStyle()
-                HStack {
-                    Button(action: { changeAvatar(next: false) }) {
-                        HStack {
-                            Image(systemName: "chevron.left")
-                                .foregroundColor(.indigo)
-                                .imageScale(.large)
+                VStack {
+                    Text("Your avatar")
+                        .font(.largeTitle)
+                        .titleIndigoStyle()
+                    HStack {
+                        Button(action: { changeAvatar(next: false) }) {
+                            HStack {
+                                Image(systemName: "chevron.left")
+                                    .foregroundColor(.indigo)
+                                    .imageScale(.large)
+                            }
                         }
-                    }
-                    avatar[selectedAvatar]
-                        .resizable()
-                        .renderingMode(.original)
-                        .aspectRatio(contentMode: .fit)
-                        .padding([.trailing, .leading], 75)
-                        .frame(maxHeight: 200)
-                    Button(action: { changeAvatar(next: true )}) {
-                        HStack {
-                            Image(systemName: "chevron.right")
-                                .foregroundColor(.indigo)
-                                .imageScale(.large)
+                        avatar[selectedAvatar]
+                            .resizable()
+                            .renderingMode(.original)
+                            .aspectRatio(contentMode: .fit)
+                            .padding([.trailing, .leading], 75)
+                            .frame(height: 200)
+                        Button(action: { changeAvatar(next: true )}) {
+                            HStack {
+                                Image(systemName: "chevron.right")
+                                    .foregroundColor(.indigo)
+                                    .imageScale(.large)
+                            }
                         }
                     }
                 }
@@ -83,10 +57,14 @@ struct GameTypeSelectionView: View {
                     }
                     TextField("Your name", text: $selectedName)
                         .padding()
-                        .textFieldStyle(.plain)
-                        .background(RoundedRectangle(cornerRadius: 20)
-                            .strokeBorder(.indigo))
-                        .autocorrectionDisabled()
+                        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                                .strokeBorder(.indigo, lineWidth: 1)
+                        }
+                        .autocorrectionDisabled(true)
+                        .focused($isNameFocused)
+                        .keyboardType(.namePhonePad)
                 }
                 VStack {
                     Text("\(gameType.displayTitle)")
@@ -119,15 +97,21 @@ struct GameTypeSelectionView: View {
                     .pickerStyle(.segmented)
                 }
                 Spacer()
-                NavigationLink("Start Game", destination: ContentView(game:
-                                                                        Game(games: selectedGameCount,
-                                                                             difficulty: selectedDifficulty,
-                                                                             type: gameType,
-                                                                             name: selectedName,
-                                                                             avatar: avatar[selectedAvatar])))
+                if showName {
+                    NavigationLink("Start Game", destination: ContentView(game:
+                                                                            Game(games: selectedGameCount,
+                                                                                 difficulty: selectedDifficulty,
+                                                                                 type: gameType,
+                                                                                 name: selectedName,
+                                                                                 avatar: avatar[selectedAvatar])))
                     .buttonStyle(IndigoButton())
+                }
+                
             }
             .padding()
+//            .onTapGesture {
+//                isNameFocused.toggle()
+//            }
         }
         .onChange(of: selectedName) { name in
             withAnimation(.linear) {
