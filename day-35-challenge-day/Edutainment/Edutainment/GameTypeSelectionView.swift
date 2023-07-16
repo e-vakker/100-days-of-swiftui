@@ -22,83 +22,12 @@ struct GameTypeSelectionView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 20) {
-                VStack {
-                    Text("Your avatar")
-                        .font(.largeTitle)
-                        .titleIndigoStyle()
-                    HStack {
-                        Button(action: { changeAvatar(next: false) }) {
-                            HStack {
-                                Image(systemName: "chevron.left")
-                                    .foregroundColor(.indigo)
-                                    .imageScale(.large)
-                            }
-                        }
-                        avatar[selectedAvatar]
-                            .resizable()
-                            .renderingMode(.original)
-                            .aspectRatio(contentMode: .fit)
-                            .padding([.trailing, .leading], 75)
-                            .frame(height: 200)
-                        Button(action: { changeAvatar(next: true )}) {
-                            HStack {
-                                Image(systemName: "chevron.right")
-                                    .foregroundColor(.indigo)
-                                    .imageScale(.large)
-                            }
-                        }
-                    }
-                }
-                VStack {
-                    if showName {
-                        Text("Your name is \(selectedName)")
-                            .titleIndigoStyle()
-                            .transition(.asymmetric(insertion: .move(edge: .top), removal: .scale))
-                    }
-                    TextField("Your name", text: $selectedName)
-                        .padding()
-                        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 20, style: .continuous)
-                                .strokeBorder(.indigo, lineWidth: 1)
-                        }
-                        .autocorrectionDisabled(true)
-                        .focused($isNameFocused)
-                        .keyboardType(.namePhonePad)
-                }
-                VStack {
-                    Text("\(gameType.displayTitle)")
-                        .titleIndigoStyle()
-                    Picker("Select game type", selection: $gameType) {
-                        ForEach(GameTypes.allCases, id: \.self) { type in
-                            Text(type.rawValue)
-                        }
-                    }
-                    .pickerStyle(.segmented)
-                }
-                VStack {
-                    Text("\(selectedGameCount.displayText)")
-                        .titleIndigoStyle()
-                    Picker("Select game count", selection: $selectedGameCount) {
-                        ForEach(TotalGames.allCases, id: \.self) { gameCount in
-                            Text("\(gameCount.rawValue)")
-                        }
-                    }
-                    .pickerStyle(.segmented)
-                }
-                VStack {
-                    Text(selectedDifficulty.displayText)
-                        .titleIndigoStyle()
-                    Picker("Select Difficulty", selection: $selectedDifficulty) {
-                        ForEach(GameDifficulty.allCases, id: \.self) { difficult in
-                            Text("\(difficult.rawValue)")
-                        }
-                    }
-                    .pickerStyle(.segmented)
-                }
+                avatarSelection
+                textFieldWithName
+                gameSettings
                 Spacer()
                 if showName {
-                    NavigationLink("Start Game", destination: ContentView(game:
+                    NavigationLink("Start Game", destination: GameView(game:
                                                                             Game(games: selectedGameCount,
                                                                                  difficulty: selectedDifficulty,
                                                                                  type: gameType,
@@ -109,9 +38,6 @@ struct GameTypeSelectionView: View {
                 
             }
             .padding()
-//            .onTapGesture {
-//                isNameFocused.toggle()
-//            }
         }
         .onChange(of: selectedName) { name in
             withAnimation(.linear) {
@@ -120,6 +46,91 @@ struct GameTypeSelectionView: View {
                 } else {
                     showName = false
                 }
+            }
+        }
+    }
+    
+    var avatarSelection: some View {
+        VStack {
+            Text("Your avatar")
+                .font(.largeTitle)
+                .titleIndigoStyle()
+            HStack {
+                Button(action: { changeAvatar(next: false) }) {
+                    HStack {
+                        Image(systemName: "chevron.left")
+                            .foregroundColor(.indigo)
+                            .imageScale(.large)
+                    }
+                }
+                avatar[selectedAvatar]
+                    .resizable()
+                    .renderingMode(.original)
+                    .aspectRatio(contentMode: .fit)
+                    .padding([.trailing, .leading], 75)
+                    .frame(height: 200)
+                Button(action: { changeAvatar(next: true )}) {
+                    HStack {
+                        Image(systemName: "chevron.right")
+                            .foregroundColor(.indigo)
+                            .imageScale(.large)
+                    }
+                }
+            }
+        }
+    }
+    
+    var textFieldWithName: some View {
+        VStack {
+            if showName {
+                Text("Your name is \(selectedName)")
+                    .titleIndigoStyle()
+                    .transition(.asymmetric(insertion: .move(edge: .top), removal: .scale))
+            }
+            TextField("Your name", text: $selectedName)
+                .padding()
+                .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                .overlay {
+                    RoundedRectangle(cornerRadius: 20, style: .continuous)
+                        .strokeBorder(.indigo, lineWidth: 1)
+                }
+                .autocorrectionDisabled(true)
+                .focused($isNameFocused)
+                .keyboardType(.namePhonePad)
+        }
+    }
+    
+    var gameSettings: some View {
+        VStack {
+            VStack {
+                Text("\(gameType.displayTitle)")
+                    .titleIndigoStyle()
+                Picker("Select game type", selection: $gameType) {
+                    ForEach(GameTypes.allCases, id: \.self) { type in
+                        Text(type.rawValue)
+                    }
+                }
+                .pickerStyle(.segmented)
+            }
+            VStack {
+                Text("\(selectedGameCount.displayText)")
+                    .titleIndigoStyle()
+                Picker("Select game count", selection: $selectedGameCount) {
+                    ForEach(TotalGames.allCases, id: \.self) { gameCount in
+                        Text("\(gameCount.rawValue)")
+                    }
+                }
+                .pickerStyle(.segmented)
+            }
+            VStack {
+                Text(selectedDifficulty.displayText)
+                    .titleIndigoStyle()
+                Picker("Select Difficulty", selection: $selectedDifficulty) {
+                    ForEach(GameDifficulty.allCases, id: \.self) { difficult in
+                        Text("\(difficult.rawValue)")
+                    }
+                }
+                .pickerStyle(.segmented)
             }
         }
     }

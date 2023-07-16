@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EC6BDCD32A60A2E30003F218 /* EdutainmentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6BDCD22A60A2E30003F218 /* EdutainmentApp.swift */; };
-		EC6BDCD52A60A2E30003F218 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6BDCD42A60A2E30003F218 /* ContentView.swift */; };
+		EC6BDCD52A60A2E30003F218 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6BDCD42A60A2E30003F218 /* GameView.swift */; };
 		EC6BDCD72A60A2E50003F218 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC6BDCD62A60A2E50003F218 /* Assets.xcassets */; };
 		EC6BDCDA2A60A2E50003F218 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC6BDCD92A60A2E50003F218 /* Preview Assets.xcassets */; };
 		EC6BDCE12A60A3CF0003F218 /* GameTypeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6BDCE02A60A3CF0003F218 /* GameTypeSelectionView.swift */; };
@@ -19,7 +19,7 @@
 /* Begin PBXFileReference section */
 		EC6BDCCF2A60A2E30003F218 /* Edutainment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Edutainment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC6BDCD22A60A2E30003F218 /* EdutainmentApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdutainmentApp.swift; sourceTree = "<group>"; };
-		EC6BDCD42A60A2E30003F218 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EC6BDCD42A60A2E30003F218 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		EC6BDCD62A60A2E50003F218 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC6BDCD92A60A2E50003F218 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EC6BDCE02A60A3CF0003F218 /* GameTypeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTypeSelectionView.swift; sourceTree = "<group>"; };
@@ -58,7 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				EC6BDCD22A60A2E30003F218 /* EdutainmentApp.swift */,
-				EC6BDCD42A60A2E30003F218 /* ContentView.swift */,
+				EC6BDCD42A60A2E30003F218 /* GameView.swift */,
 				EC6BDCD62A60A2E50003F218 /* Assets.xcassets */,
 				EC6BDCD82A60A2E50003F218 /* Preview Content */,
 				EC6BDCE02A60A3CF0003F218 /* GameTypeSelectionView.swift */,
@@ -148,7 +148,7 @@
 			files = (
 				EC6BDCE12A60A3CF0003F218 /* GameTypeSelectionView.swift in Sources */,
 				ECCD48F92A63409F004D8A5B /* Styles.swift in Sources */,
-				EC6BDCD52A60A2E30003F218 /* ContentView.swift in Sources */,
+				EC6BDCD52A60A2E30003F218 /* GameView.swift in Sources */,
 				EC6BDCD32A60A2E30003F218 /* EdutainmentApp.swift in Sources */,
 				EC6BDCE32A617BCE0003F218 /* Model.swift in Sources */,
 			);

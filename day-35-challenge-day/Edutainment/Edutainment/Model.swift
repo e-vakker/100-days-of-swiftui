@@ -98,6 +98,9 @@ struct Game {
     let avatar: Image
     var score: Int = 0
     var equations: [Equation] = []
+    var isEndedGame: Bool = false
+    var winningStreak = 1
+    var finalScore = 0
     
     
     mutating func makeGames() {
@@ -110,12 +113,21 @@ struct Game {
     }
     
     mutating func checkResult(result: String) {
-        if Int(result) == equations.first?.result {
-            score += 10
-            equations.remove(at: 0)
-        } else {
-            score -= 10
-            equations.remove(at: 0)
+        if let equation = equations.first?.result {
+            if Int(result) == equation {
+                score += 10 * winningStreak
+                winningStreak *= 2
+                equations.remove(at: 0)
+                finalScore = 10 * winningStreak
+            } else {
+                winningStreak = 1
+                score -= 10
+                equations.remove(at: 0)
+                finalScore = -10
+            }
+            if equations.isEmpty {
+                isEndedGame = true
+            }
         }
     }
     
