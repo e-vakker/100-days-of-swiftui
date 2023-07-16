@@ -22,7 +22,11 @@ struct GameTypeSelectionView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 20) {
-                avatarSelection
+                if !isNameFocused {
+                    withAnimation() {
+                        avatarSelection
+                    }
+                }
                 textFieldWithName
                 gameSettings
                 Spacer()

@@ -15,6 +15,8 @@ struct GameView: View {
     
     @State private var animationOpacity = 0.0
     
+    @FocusState private var isTextFieldFocused: Bool
+    
     @Environment(\.presentationMode) var presentationMode
     
     var topBar: some View {
@@ -34,10 +36,25 @@ struct GameView: View {
     }
     
     var bottomBar: some View {
-        VStack {
-            Text("Your score: \(game.score)")
-                .titleIndigoStyle()
+        ZStack {
+            VStack {
+                Text("Your score: \(game.score)")
+                    .titleIndigoStyle()
+            }
+            HStack {
+                Spacer()
+                Button(action: {
+                    returnToMenu()
+                }) {
+                    Image(systemName: "arrow.counterclockwise")
+                        .foregroundColor(.gray)
+                        .font(.title)
+                }
+                .buttonStyle(.borderless)
+                .padding(.leading)
+            }
         }
+        
         .padding()
         .frame(maxWidth: .infinity)
         .background(.regularMaterial)
@@ -64,8 +81,8 @@ struct GameView: View {
                     ZStack {
                         VStack(spacing: 40) {
                             Text("Your score: \(game.score)")
-                            Button("Restart game") {
-                                self.presentationMode.wrappedValue.dismiss()
+                            Button("Return to the menu") {
+                                returnToMenu()
                             }
                             .buttonStyle(IndigoButton())
                         }
@@ -99,10 +116,12 @@ struct GameView: View {
                                 }
                                 .autocorrectionDisabled(true)
                                 .keyboardType(.decimalPad)
+                                .focused($isTextFieldFocused)
                             Button("Check") {
                                 game.checkResult(result: equals)
                                 equals = ""
                                 animationOpacity = 1.0
+                                isTextFieldFocused = false
                             }
                             .font(.title)
                             .padding([.leading, .trailing], 60)
@@ -128,6 +147,10 @@ struct GameView: View {
         .onAppear() {
             game.makeGames()
         }
+    }
+    
+    func returnToMenu() {
+        self.presentationMode.wrappedValue.dismiss()
     }
 }
 
