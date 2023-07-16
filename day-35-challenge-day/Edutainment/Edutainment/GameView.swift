@@ -15,8 +15,6 @@ struct GameView: View {
     
     @State private var animationOpacity = 0.0
     
-    @FocusState private var isTextFieldFocused: Bool
-    
     @Environment(\.presentationMode) var presentationMode
     
     var topBar: some View {
@@ -81,7 +79,7 @@ struct GameView: View {
                     ZStack {
                         VStack(spacing: 40) {
                             Text("Your score: \(game.score)")
-                            Button("Return to the menu") {
+                            Button("Return To Main Menu") {
                                 returnToMenu()
                             }
                             .buttonStyle(IndigoButton())
@@ -116,12 +114,10 @@ struct GameView: View {
                                 }
                                 .autocorrectionDisabled(true)
                                 .keyboardType(.decimalPad)
-                                .focused($isTextFieldFocused)
                             Button("Check") {
                                 game.checkResult(result: equals)
                                 equals = ""
                                 animationOpacity = 1.0
-                                isTextFieldFocused = false
                             }
                             .font(.title)
                             .padding([.leading, .trailing], 60)
