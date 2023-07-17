@@ -16,19 +16,16 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(expenses.items) { item in
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text(item.name)
-                                .font(.headline)
-                            Text(item.type)
-                        }
-                        
-                        Spacer()
-                        Text(item.amount, format: .currency(code: "USD"))
+                if expenses.items.contains(where: {$0.type == "Personal"}) {
+                    Section("Personal") {
+                        generateSection(for: "Personal")
                     }
                 }
-                .onDelete(perform: removeItems)
+                if expenses.items.contains(where: {$0.type == "Business"}) {
+                    Section("Business") {
+                        generateSection(for: "Business")
+                    }
+                }
             }
             .navigationTitle("iExpense")
             .toolbar {
@@ -46,6 +43,34 @@ struct ContentView: View {
     
     func removeItems(at offsets: IndexSet) {
         expenses.items.remove(atOffsets: offsets)
+    }
+    
+    func generateSection(for type: String) -> some View {
+        ForEach(expenses.items, id: \.id) { item in
+            if item.type == type {
+                HStack {
+                    Text(item.name)
+                        .font(.headline)
+                    Spacer()
+                    Text(item.amount, format: .currency(code: item.currency)).tag(item.currency)
+                        .foregroundColor(currencyColorStyle(amountExpenses: item.amount))
+                }
+            }
+        }
+        .onDelete(perform: removeItems)
+    }
+    
+    func currencyColorStyle(amountExpenses: Double) -> Color {
+        switch amountExpenses {
+        case 0...10:
+            return .green
+        case 11...99:
+            return .blue
+        case 100...:
+            return .red
+        default:
+            return .white
+        }
     }
 }
 
