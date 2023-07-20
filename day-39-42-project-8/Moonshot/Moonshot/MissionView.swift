@@ -9,23 +9,11 @@ import SwiftUI
 
 struct MissionView: View {
     let mission: Mission
-    
-    struct CrewMember {
-        let role: String
-        let astronaut: Astronaut
-    }
-    
     let crew: [CrewMember]
     
     init(mission: Mission, astronauts: [String: Astronaut]) {
         self.mission = mission
-        self.crew = mission.crew.map { member in
-            if let astronaut = astronauts[member.name] {
-                return CrewMember(role: member.role, astronaut: astronaut)
-            } else {
-                fatalError("Missing \(member.name)")
-            }
-        }
+        self.crew = CrewMember.addCrewMembers(mission: mission, astronauts: astronauts)
     }
     
     var body: some View {
@@ -43,39 +31,7 @@ struct MissionView: View {
                             .font(.title.bold())
                             .padding(.bottom, 5)
                         
-                        ScrollView (.horizontal, showsIndicators: false) {
-                            HStack {
-                                ForEach(crew, id: \.role) { crewMember in
-                                    NavigationLink {
-                                        AstronautView(astronaut: crewMember.astronaut)
-                                    } label: {
-                                        HStack {
-                                            Image(crewMember.astronaut.id)
-                                                .resizable()
-                                                .scaledToFit()
-                                                .frame(height: 75)
-                                                .clipShape(Circle())
-                                                .overlay {
-                                                    Circle()
-                                                        .strokeBorder(.black, lineWidth: 0.25)
-                                                }
-                                            
-                                            VStack(alignment: .leading) {
-                                                Text(crewMember.astronaut.name)
-                                                    .foregroundColor(.white)
-                                                    .font(.headline)
-                                                Text(crewMember.role)
-                                                    .foregroundColor(.secondary)
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        Rectangle()
-                            .frame(height: 2)
-                            .foregroundColor(.lightBackground)
-                            .padding(.vertical)
+                        CrewView(crew: crew, launchDate: mission.formattedLaunchDate)
                         
                         Text("Mission Highlights")
                             .font(.title.bold())
@@ -105,7 +61,7 @@ struct MissionView_Previews: PreviewProvider {
     static let astronauts: [String: Astronaut] = Bundle.main.decode("astronauts.json")
     
     static var previews: some View {
-        MissionView(mission: missions[0], astronauts: astronauts)
+        MissionView(mission: missions[1], astronauts: astronauts)
             .preferredColorScheme(.dark)
     }
 }

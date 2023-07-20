@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC2801602A69D01E005372EB /* CrewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC28015F2A69D01E005372EB /* CrewView.swift */; };
+		EC2801622A69D817005372EB /* CrewMember.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2801612A69D817005372EB /* CrewMember.swift */; };
+		EC2801642A69DFE0005372EB /* GridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2801632A69DFE0005372EB /* GridLayout.swift */; };
+		EC2801662A69E0D8005372EB /* ListLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2801652A69E0D8005372EB /* ListLayout.swift */; };
 		ECCD49272A673239004D8A5B /* MoonshotApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCD49262A673239004D8A5B /* MoonshotApp.swift */; };
 		ECCD49292A673239004D8A5B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECCD49282A673239004D8A5B /* ContentView.swift */; };
 		ECCD492B2A67323B004D8A5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECCD492A2A67323B004D8A5B /* Assets.xcassets */; };
@@ -22,6 +26,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EC28015F2A69D01E005372EB /* CrewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewView.swift; sourceTree = "<group>"; };
+		EC2801612A69D817005372EB /* CrewMember.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrewMember.swift; sourceTree = "<group>"; };
+		EC2801632A69DFE0005372EB /* GridLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridLayout.swift; sourceTree = "<group>"; };
+		EC2801652A69E0D8005372EB /* ListLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListLayout.swift; sourceTree = "<group>"; };
 		ECCD49232A673239004D8A5B /* Moonshot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Moonshot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECCD49262A673239004D8A5B /* MoonshotApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoonshotApp.swift; sourceTree = "<group>"; };
 		ECCD49282A673239004D8A5B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -69,7 +77,10 @@
 			children = (
 				ECCD49262A673239004D8A5B /* MoonshotApp.swift */,
 				ECCD49282A673239004D8A5B /* ContentView.swift */,
+				EC2801632A69DFE0005372EB /* GridLayout.swift */,
 				ECCD49402A688652004D8A5B /* MissionView.swift */,
+				EC28015F2A69D01E005372EB /* CrewView.swift */,
+				EC2801652A69E0D8005372EB /* ListLayout.swift */,
 				ECCD49422A688FE0004D8A5B /* AstronautView.swift */,
 				ECCD493E2A6880BC004D8A5B /* Color-Theme.swift */,
 				ECCD492A2A67323B004D8A5B /* Assets.xcassets */,
@@ -79,6 +90,7 @@
 				ECCD49342A674044004D8A5B /* astronauts.json */,
 				ECCD49352A674044004D8A5B /* missions.json */,
 				ECCD492C2A67323B004D8A5B /* Preview Content */,
+				EC2801612A69D817005372EB /* CrewMember.swift */,
 			);
 			path = Moonshot;
 			sourceTree = "<group>";
@@ -164,13 +176,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECCD49412A688652004D8A5B /* MissionView.swift in Sources */,
+				EC2801602A69D01E005372EB /* CrewView.swift in Sources */,
 				ECCD49392A6740D1004D8A5B /* Astronaut.swift in Sources */,
 				ECCD49432A688FE0004D8A5B /* AstronautView.swift in Sources */,
+				EC2801622A69D817005372EB /* CrewMember.swift in Sources */,
 				ECCD493F2A6880BC004D8A5B /* Color-Theme.swift in Sources */,
 				ECCD49292A673239004D8A5B /* ContentView.swift in Sources */,
 				ECCD49272A673239004D8A5B /* MoonshotApp.swift in Sources */,
 				ECCD493D2A6875B6004D8A5B /* Mission.swift in Sources */,
+				EC2801662A69E0D8005372EB /* ListLayout.swift in Sources */,
 				ECCD493B2A674146004D8A5B /* Bundle-Decodable.swift in Sources */,
+				EC2801642A69DFE0005372EB /* GridLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
