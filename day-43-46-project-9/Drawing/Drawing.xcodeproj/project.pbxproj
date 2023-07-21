@@ -11,6 +11,8 @@
 		EC2801762A6AAEFB005372EB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2801752A6AAEFB005372EB /* ContentView.swift */; };
 		EC2801782A6AAEFD005372EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC2801772A6AAEFD005372EB /* Assets.xcassets */; };
 		EC28017B2A6AAEFD005372EB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC28017A2A6AAEFD005372EB /* Preview Assets.xcassets */; };
+		EC2801822A6AB0BA005372EB /* CreatingCustomPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2801812A6AB0BA005372EB /* CreatingCustomPaths.swift */; };
+		EC2801842A6AB4CB005372EB /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2801832A6AB4CB005372EB /* Shapes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		EC2801752A6AAEFB005372EB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EC2801772A6AAEFD005372EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC28017A2A6AAEFD005372EB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EC2801812A6AB0BA005372EB /* CreatingCustomPaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingCustomPaths.swift; sourceTree = "<group>"; };
+		EC2801832A6AB4CB005372EB /* Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,8 @@
 				EC2801752A6AAEFB005372EB /* ContentView.swift */,
 				EC2801772A6AAEFD005372EB /* Assets.xcassets */,
 				EC2801792A6AAEFD005372EB /* Preview Content */,
+				EC2801812A6AB0BA005372EB /* CreatingCustomPaths.swift */,
+				EC2801832A6AB4CB005372EB /* Shapes.swift */,
 			);
 			path = Drawing;
 			sourceTree = "<group>";
@@ -137,8 +143,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC2801822A6AB0BA005372EB /* CreatingCustomPaths.swift in Sources */,
 				EC2801762A6AAEFB005372EB /* ContentView.swift in Sources */,
 				EC2801742A6AAEFB005372EB /* DrawingApp.swift in Sources */,
+				EC2801842A6AB4CB005372EB /* Shapes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
