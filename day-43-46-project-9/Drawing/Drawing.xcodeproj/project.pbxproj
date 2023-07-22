@@ -16,6 +16,9 @@
 		EC8C3B172A6C6A870031B249 /* TransformingShapesUsingCGAffineTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8C3B162A6C6A870031B249 /* TransformingShapesUsingCGAffineTransform.swift */; };
 		EC8C3B192A6C6D710031B249 /* UsingImagePaint.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8C3B182A6C6D710031B249 /* UsingImagePaint.swift */; };
 		EC8C3B1B2A6C6FA40031B249 /* MetalRenderingWithDrawingGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8C3B1A2A6C6FA40031B249 /* MetalRenderingWithDrawingGroup.swift */; };
+		EC8C3B1D2A6C79890031B249 /* SpecialEffectsInSwiftUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8C3B1C2A6C79890031B249 /* SpecialEffectsInSwiftUI.swift */; };
+		EC8C3B1F2A6C7FC80031B249 /* AnimatingSimpleShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8C3B1E2A6C7FC80031B249 /* AnimatingSimpleShapes.swift */; };
+		EC8C3B212A6C83720031B249 /* AnimatingComplexShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8C3B202A6C83720031B249 /* AnimatingComplexShapes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +32,9 @@
 		EC8C3B162A6C6A870031B249 /* TransformingShapesUsingCGAffineTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransformingShapesUsingCGAffineTransform.swift; sourceTree = "<group>"; };
 		EC8C3B182A6C6D710031B249 /* UsingImagePaint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsingImagePaint.swift; sourceTree = "<group>"; };
 		EC8C3B1A2A6C6FA40031B249 /* MetalRenderingWithDrawingGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalRenderingWithDrawingGroup.swift; sourceTree = "<group>"; };
+		EC8C3B1C2A6C79890031B249 /* SpecialEffectsInSwiftUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialEffectsInSwiftUI.swift; sourceTree = "<group>"; };
+		EC8C3B1E2A6C7FC80031B249 /* AnimatingSimpleShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatingSimpleShapes.swift; sourceTree = "<group>"; };
+		EC8C3B202A6C83720031B249 /* AnimatingComplexShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatingComplexShapes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +76,9 @@
 				EC8C3B162A6C6A870031B249 /* TransformingShapesUsingCGAffineTransform.swift */,
 				EC8C3B182A6C6D710031B249 /* UsingImagePaint.swift */,
 				EC8C3B1A2A6C6FA40031B249 /* MetalRenderingWithDrawingGroup.swift */,
+				EC8C3B1C2A6C79890031B249 /* SpecialEffectsInSwiftUI.swift */,
+				EC8C3B1E2A6C7FC80031B249 /* AnimatingSimpleShapes.swift */,
+				EC8C3B202A6C83720031B249 /* AnimatingComplexShapes.swift */,
 			);
 			path = Drawing;
 			sourceTree = "<group>";
@@ -155,9 +164,12 @@
 				EC2801822A6AB0BA005372EB /* CreatingCustomPaths.swift in Sources */,
 				EC2801762A6AAEFB005372EB /* ContentView.swift in Sources */,
 				EC2801742A6AAEFB005372EB /* DrawingApp.swift in Sources */,
+				EC8C3B1D2A6C79890031B249 /* SpecialEffectsInSwiftUI.swift in Sources */,
 				EC8C3B192A6C6D710031B249 /* UsingImagePaint.swift in Sources */,
+				EC8C3B212A6C83720031B249 /* AnimatingComplexShapes.swift in Sources */,
 				EC8C3B172A6C6A870031B249 /* TransformingShapesUsingCGAffineTransform.swift in Sources */,
 				EC8C3B1B2A6C6FA40031B249 /* MetalRenderingWithDrawingGroup.swift in Sources */,
+				EC8C3B1F2A6C7FC80031B249 /* AnimatingSimpleShapes.swift in Sources */,
 				EC2801842A6AB4CB005372EB /* Shapes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
