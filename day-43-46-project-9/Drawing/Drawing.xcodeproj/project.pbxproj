@@ -20,6 +20,8 @@
 		EC8C3B1F2A6C7FC80031B249 /* AnimatingSimpleShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8C3B1E2A6C7FC80031B249 /* AnimatingSimpleShapes.swift */; };
 		EC8C3B212A6C83720031B249 /* AnimatingComplexShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8C3B202A6C83720031B249 /* AnimatingComplexShapes.swift */; };
 		EC8C3B232A6C89730031B249 /* CreatingSpirograph.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8C3B222A6C89730031B249 /* CreatingSpirograph.swift */; };
+		EC8C3B252A6EF3520031B249 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8C3B242A6EF3520031B249 /* Challenge.swift */; };
+		EC8C3B272A6F12CF0031B249 /* Challenge2.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC8C3B262A6F12CF0031B249 /* Challenge2.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		EC8C3B1E2A6C7FC80031B249 /* AnimatingSimpleShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatingSimpleShapes.swift; sourceTree = "<group>"; };
 		EC8C3B202A6C83720031B249 /* AnimatingComplexShapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatingComplexShapes.swift; sourceTree = "<group>"; };
 		EC8C3B222A6C89730031B249 /* CreatingSpirograph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingSpirograph.swift; sourceTree = "<group>"; };
+		EC8C3B242A6EF3520031B249 /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
+		EC8C3B262A6F12CF0031B249 /* Challenge2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +86,8 @@
 				EC8C3B1E2A6C7FC80031B249 /* AnimatingSimpleShapes.swift */,
 				EC8C3B202A6C83720031B249 /* AnimatingComplexShapes.swift */,
 				EC8C3B222A6C89730031B249 /* CreatingSpirograph.swift */,
+				EC8C3B242A6EF3520031B249 /* Challenge.swift */,
+				EC8C3B262A6F12CF0031B249 /* Challenge2.swift */,
 			);
 			path = Drawing;
 			sourceTree = "<group>";
@@ -164,7 +170,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC8C3B272A6F12CF0031B249 /* Challenge2.swift in Sources */,
 				EC2801822A6AB0BA005372EB /* CreatingCustomPaths.swift in Sources */,
+				EC8C3B252A6EF3520031B249 /* Challenge.swift in Sources */,
 				EC2801762A6AAEFB005372EB /* ContentView.swift in Sources */,
 				EC2801742A6AAEFB005372EB /* DrawingApp.swift in Sources */,
 				EC8C3B1D2A6C79890031B249 /* SpecialEffectsInSwiftUI.swift in Sources */,
