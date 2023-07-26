@@ -8,14 +8,51 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @StateObject var manager = HabitManager()
+    
+    @State private var showingAddHabit: Bool = false
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationStack {
+            List {
+                ForEach(manager.habits) { habit in
+                    Text("\(habit.name)")
+                }
+                .onDelete(perform: deleteHabit)
+            }
+            .navigationTitle("Habit Tracker")
+            .navigationBarTitleTextColor(.blue)
+            .toolbar {
+                ToolbarItem(placement: .bottomBar) {
+                    HStack {
+                        Button() {
+                            showingAddHabit = true
+                        } label: {
+                            HStack {
+                                Image(systemName: "plus.circle.fill")
+                                Text("Add habit")
+                            }
+                            .font(.body)
+                            .fontWeight(.medium)
+                            .fontDesign(.rounded)
+                            .foregroundColor(.blue)
+                        }
+                        Spacer()
+                    }
+                }
+            }
+            .toolbar {
+                EditButton()
+            }
+            .sheet(isPresented: $showingAddHabit) {
+                AddHabitView(habits: manager)
+            }
         }
-        .padding()
+    }
+// Temporary "Delete in future"
+    func deleteHabit(at offsets: IndexSet) {
+        manager.habits.remove(atOffsets: offsets)
     }
 }
 
