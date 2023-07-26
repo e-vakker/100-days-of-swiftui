@@ -15,13 +15,18 @@ struct Habit: Identifiable, Codable, Equatable {
     var timesCompletedToday: Int = 0
     var targetTimesPerDay: Int
     
+    mutating func habitComplete() {
+        if timesCompletedToday < 20 {
+            timesCompletedToday += 1
+        }
+    }
     // Returns an example of a habit for demonstration
     static func sampleHabit() -> Self {
         return Habit(
             name: "Morning Exercise",
             description: "Perform a 10-minute morning exercise routine",
             startDate: Date(),
-            targetTimesPerDay: 1
+            targetTimesPerDay: 5
         )
     }
 }

@@ -1,5 +1,5 @@
 //
-//  AddHabitView.swift
+//  EditHabitView.swift
 //  HabitTracker
 //
 //  Created by Jevgeni Vakker on 26.07.2023.
@@ -7,14 +7,15 @@
 
 import SwiftUI
 
-struct AddHabitView: View {
-    @ObservedObject var habits: HabitManager
+struct EditHabitView: View {
+    @Binding var habit: Habit
     
     @Environment(\.dismiss) var dismiss
     
-    @State private var name = ""
-    @State private var description = ""
-    @State private var targetTimesPerDay = 1
+    @State private var name: String = ""
+    @State private var description: String = ""
+    @State private var targetTimesPerDay: Int = 1
+    @State private var timesCompletedToday: Int = 0
     
     @FocusState private var nameFieldIsFocused
     
@@ -28,49 +29,49 @@ struct AddHabitView: View {
                         .lineLimit(7)
                         .frame(minHeight: 70, alignment: .top)
                 }
-                
                 Section("Target Times Per Day") {
                     Stepper(value: $targetTimesPerDay, in: 1...20) {
                         Text("\(targetTimesPerDay)")
                     }
                 }
+                Section("Completed Times") {
+                    Stepper(value: $timesCompletedToday, in: 0...20) {
+                        Text("\(timesCompletedToday)")
+                    }
+                }
             }
-            .navigationTitle("Add Habit")
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("Edit \(habit.name)")
+            .navigationBarTitleTextColor(.blue)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
-                        addHabit()
-                    } label: {
-                        Text("Add")
-                            .fontWeight(.medium)
-                    }
-                    .disabled(name.isEmpty ? true : false)
-                }
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Cancel") {
+                        editHabit()
                         dismiss()
+                    } label: {
+                        Text("Done")
+                            .fontWeight(.medium)
                     }
                 }
             }
         }
         .onAppear {
-            nameFieldIsFocused = true
+            name = habit.name
+            description = habit.description
+            targetTimesPerDay = habit.targetTimesPerDay
+            timesCompletedToday = habit.timesCompletedToday
         }
     }
     
-    func addHabit() {
-        guard !name.isEmpty else {
-            return
-        }
-        let newHabit = Habit(name: name, description: description, startDate: Date(), targetTimesPerDay: targetTimesPerDay)
-        habits.addHabit(newHabit)
-        dismiss()
+    func editHabit() {
+        habit.name = name
+        habit.description = description
+        habit.targetTimesPerDay = targetTimesPerDay
+        habit.timesCompletedToday = timesCompletedToday
     }
 }
 
-struct AddHabitView_Previews: PreviewProvider {
+struct EditHabitView_Previews: PreviewProvider {
     static var previews: some View {
-        AddHabitView(habits: HabitManager())
+        EditHabitView(habit: .constant(Habit.sampleHabit()))
     }
 }

@@ -8,15 +8,42 @@
 import SwiftUI
 
 struct HabitListItemView: View {
-    let habit: Habit
+    @Binding var habit: Habit
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            Button {
+                habit.habitComplete()
+            } label: {
+                Image(systemName: "plus")
+                    .font(.title2)
+            }
+            .disabled(habit.timesCompletedToday == 20 ? true : false)
+            VStack(alignment: .leading, spacing: 10) {
+                Text("\(habit.name)")
+                Text("\(habit.description)")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                    .lineLimit(1)
+            }
+            Spacer()
+            Text("\(habit.timesCompletedToday)/\(habit.targetTimesPerDay)")
+                .padding()
+                .overlay() {
+                    Circle()
+                        .stroke(.red ,lineWidth: 1)
+                }
+        }
     }
 }
 
 struct HabitListItemView_Previews: PreviewProvider {
     static var previews: some View {
-        HabitListItemView(habit: Habit.sampleHabit())
+        List {
+            HabitListItemView(habit: .constant(Habit.sampleHabit()))
+            HabitListItemView(habit: .constant(Habit.sampleHabit()))
+            HabitListItemView(habit: .constant(Habit.sampleHabit()))
+            HabitListItemView(habit: .constant(Habit.sampleHabit()))
+        }
     }
 }

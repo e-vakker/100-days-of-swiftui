@@ -16,8 +16,20 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             List {
-                ForEach(manager.habits) { habit in
-                    Text("\(habit.name)")
+                ForEach($manager.habits) { $habit in
+                    HabitListItemView(habit: $habit)
+                        .contextMenu {
+                            NavigationLink {
+                                EditHabitView(habit: $habit)
+                            } label: {
+                                HStack {
+                                    Text("Edit Habit")
+                                    Spacer()
+                                    Image(systemName: "info.circle")
+                                }
+                                
+                            }
+                        }
                 }
                 .onDelete(perform: deleteHabit)
             }
