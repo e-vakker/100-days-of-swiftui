@@ -34,7 +34,7 @@ struct AddHabitView: View {
                 }
             }
             .navigationTitle("Add Habit")
-            .navigationBarTitleTextColor(.blue)
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {

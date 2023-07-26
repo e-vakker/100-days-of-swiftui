@@ -16,7 +16,18 @@ extension View {
     func navigationBarTitleTextColor(_ color: Color) -> some View {
         let uiColor = UIColor(color)
         
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: uiColor ]
+        var titleFont = UIFont.preferredFont(forTextStyle: .largeTitle) /// the default large title font
+        titleFont = UIFont(
+            descriptor:
+                titleFont.fontDescriptor
+                .withDesign(.rounded)? /// make rounded
+                .withSymbolicTraits(.traitBold) /// make bold
+            ??
+            titleFont.fontDescriptor, /// return the normal title if customization failed
+            size: titleFont.pointSize
+        )
+        
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: uiColor, .font: titleFont]
         
         return self
     }
