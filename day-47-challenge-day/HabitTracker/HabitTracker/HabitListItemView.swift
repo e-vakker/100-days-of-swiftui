@@ -10,8 +10,10 @@ import SwiftUI
 struct HabitListItemView: View {
     @Binding var habit: Habit
     
+    @State private var colorGoal: Color = .red
+    
     var body: some View {
-        HStack {
+        HStack(spacing: 20) {
             Button {
                 habit.habitComplete()
             } label: {
@@ -29,10 +31,26 @@ struct HabitListItemView: View {
             Spacer()
             Text("\(habit.timesCompletedToday)/\(habit.targetTimesPerDay)")
                 .padding()
-                .overlay() {
+                .background(colorGoal)
+                .clipShape(Circle())
+                .overlay {
                     Circle()
-                        .stroke(.red ,lineWidth: 1)
+                        .strokeBorder(.quaternary, lineWidth: 1)
                 }
+                .frame(width: 70)
+                .foregroundColor(.white)
+        }
+        .onChange(of: habit.timesCompletedToday) { completedToday in
+            withAnimation() {
+                if completedToday >= habit.targetTimesPerDay {
+                    colorGoal = .green
+                } else if completedToday >= 1 {
+                    colorGoal = .yellow
+                } else if completedToday == 0 {
+                    colorGoal = .red
+                }
+            }
+            
         }
     }
 }

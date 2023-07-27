@@ -62,7 +62,7 @@ struct ContentView: View {
             }
         }
     }
-// Temporary "Delete in future"
+
     func deleteHabit(at offsets: IndexSet) {
         manager.habits.remove(atOffsets: offsets)
     }

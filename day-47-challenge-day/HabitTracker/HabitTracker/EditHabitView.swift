@@ -22,6 +22,9 @@ struct EditHabitView: View {
     var body: some View {
         NavigationStack {
             Form {
+                Section("Start date") {
+                    Text("\(habit.startDate.formatted(date: .long, time: .omitted))")
+                }
                 Section("Habit Details") {
                     TextField("Title", text: $name)
                         .focused($nameFieldIsFocused)
