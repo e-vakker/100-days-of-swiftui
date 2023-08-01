@@ -10,8 +10,9 @@ import SwiftUI
 struct CheckOutView: View {
     @ObservedObject var order: Order
     
-    @State private var confirmationMessage = ""
-    @State private var showingConfirmation = false
+    @State private var alertTitle = ""
+    @State private var alertMessage = ""
+    @State private var showingAlert = false
     
     var body: some View {
         ScrollView {
@@ -25,7 +26,7 @@ struct CheckOutView: View {
                 }
                 .frame(height: 233)
                 
-                Text("Your total is \(order.cost, format: .currency(code: "USD"))")
+                Text("Your total is \(order.orderDetails.quantity, format: .currency(code: "USD"))")
                     .font(.title)
                 
                 Button("Place Order") {
@@ -36,10 +37,10 @@ struct CheckOutView: View {
                     .padding()
             }
         }
-        .alert("Thank you!", isPresented: $showingConfirmation) {
+        .alert(alertTitle, isPresented: $showingAlert) {
             Button("OK") {}
         } message: {
-            Text(confirmationMessage)
+            Text(alertMessage)
         }
         .navigationTitle("Check out")
         .navigationBarTitleDisplayMode(.inline)
@@ -59,10 +60,14 @@ struct CheckOutView: View {
         do {
             let (data, _) = try await URLSession.shared.upload(for: request, from: encoded)
             let decodedOrder = try JSONDecoder().decode(Order.self, from: data)
-            confirmationMessage = "Your order for \(decodedOrder.quantity)x \(Order.types[decodedOrder.type].lowercased()) cupcakes is on its way!"
-            showingConfirmation = true
+            alertTitle = "Thank you!"
+            alertMessage = "Your order for \(decodedOrder.orderDetails.quantity)x \(OrderDetails.types[decodedOrder.orderDetails.type].lowercased()) cupcakes is on its way!"
+            showingAlert = true
         } catch {
             print("Checkout failed.")
+            alertTitle = "Error!"
+            alertMessage = "Checkout failed. Check your internet connection"
+            showingAlert = true
         }
     }
 }

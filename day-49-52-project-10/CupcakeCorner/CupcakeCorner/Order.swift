@@ -8,48 +8,37 @@
 import SwiftUI
 
 class Order: ObservableObject, Codable {
-    static let types = ["Vanilla", "Strawberry", "Chocolate", "Rainbow"]
+    @Published var orderDetails = OrderDetails()
+    @Published var address = Address()
     
     enum CodingKeys: CodingKey {
-        case type, quantity, extraFrosting, addSprinkles, name, streetAddress, city, zip
+        case orderDetails, address
     }
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        type = try container.decode(Int.self, forKey: .type)
-        quantity = try container.decode(Int.self, forKey: .quantity)
-        
-        extraFrosting = try container.decode(Bool.self, forKey: .extraFrosting)
-        addSprinkles = try container.decode(Bool.self, forKey: .addSprinkles)
-        
-        name = try container.decode(String.self, forKey: .name)
-        streetAddress = try container.decode(String.self, forKey: .streetAddress)
-        city = try container.decode(String.self, forKey: .city)
-        zip = try container.decode(String.self, forKey: .zip)
+        orderDetails = try container.decode(OrderDetails.self, forKey: .orderDetails)
+        address = try container.decode(Address.self, forKey: .address)
     }
     
     init() {}
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        
-        try container.encode(type, forKey: .type)
-        try container.encode(quantity, forKey: .quantity)
-        
-        try container.encode(extraFrosting, forKey: .extraFrosting)
-        try container.encode(addSprinkles, forKey: .addSprinkles)
-        
-        try container.encode(name, forKey: .name)
-        try container.encode(streetAddress, forKey: .streetAddress)
-        try container.encode(city, forKey: .city)
-        try container.encode(zip, forKey: .zip)
+        try container.encode(orderDetails, forKey: .orderDetails)
+        try container.encode(address, forKey: .address)
     }
+}
+
+struct OrderDetails: Codable {
+    static let types = ["Vanilla", "Strawberry", "Chocolate", "Rainbow"]
     
-    @Published var type = 0
-    @Published var quantity = 3
+    var type = 0
+    var quantity = 3
+    var extraFrosting = false
+    var addSprinkles = false
     
-    @Published var specialRequestEnabled = false {
+    var specialRequestEnabled = false {
         didSet {
             if specialRequestEnabled == false {
                 extraFrosting = false
@@ -57,23 +46,7 @@ class Order: ObservableObject, Codable {
             }
         }
     }
-    
-    @Published var extraFrosting = false
-    @Published var addSprinkles = false
-    
-    @Published var name = ""
-    @Published var streetAddress = ""
-    @Published var city = ""
-    @Published var zip = ""
-    
-    var hasValidAddress: Bool {
-        if name.isEmpty || streetAddress.isEmpty || city.isEmpty || zip.isEmpty {
-            return false
-        }
-        
-        return true
-    }
-    
+
     var cost: Double {
         var cost = Double(quantity) * 2
         cost += (Double(type) / 2)
@@ -87,5 +60,24 @@ class Order: ObservableObject, Codable {
         }
         
         return cost
+    }
+}
+
+struct Address: Codable {
+    var name = ""
+    var streetAddress = ""
+    var city = ""
+    var zip = ""
+    
+    var hasValidAddress: Bool {
+        if name.isEmpty || streetAddress.isEmpty || city.isEmpty || zip.isEmpty {
+            return false
+        }
+        
+        if name.hasPrefix(" ") || name.hasSuffix(" ") || streetAddress.hasSuffix(" ") || streetAddress.hasPrefix(" ") || city.hasSuffix(" ") || city.hasPrefix(" ") || zip.hasPrefix(" ") || zip.hasSuffix(" ") {
+            return false
+        }
+        
+        return true
     }
 }
