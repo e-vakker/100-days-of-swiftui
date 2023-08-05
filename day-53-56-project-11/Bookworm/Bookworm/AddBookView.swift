@@ -28,21 +28,28 @@ struct AddBookView: View {
                     
                     Picker("Genre", selection: $genre) {
                         ForEach(genres, id: \.self) {
-                            Text($0)
+                            Text($0).tag($0)
                         }
                     }
                 }
                 
                 Section {
-                    TextEditor(text: $review)
+                    TextField("Write a review", text: $review, axis: .vertical)
+                        .frame(minHeight: 60, alignment: .top)
+                        .lineLimit(5)
                     
                     RatingView(rating: $rating)
-                } header: {
-                    Text("Write a review")
                 }
-                
-                Section {
-                    Button("Save") {
+            }
+            .navigationTitle("Add Book")
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel") {
+                        dismiss()
+                    }
+                }
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Add") {
                         let newBook = Book(context: moc)
                         newBook.id = UUID()
                         newBook.title = title
@@ -50,13 +57,14 @@ struct AddBookView: View {
                         newBook.rating = Int16(rating)
                         newBook.genre = genre
                         newBook.review = review
+                        newBook.date = Date.now
                         
                         try? moc.save()
                         dismiss()
                     }
+                    .disabled(title.isEmpty || author.isEmpty ? true : false)
                 }
             }
-            .navigationTitle("Add Book")
         }
     }
 }

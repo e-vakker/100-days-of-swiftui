@@ -18,20 +18,41 @@ struct DetailView: View {
     
     var body: some View {
         ScrollView {
-            ZStack(alignment: .bottomTrailing) {
+            ZStack {
                 Image(book.genre ?? "Fantasy")
                     .resizable()
                     .scaledToFit()
-                
-                Text(book.genre?.uppercased() ?? "FANTASY")
-                    .font(.caption)
-                    .fontWeight(.black)
-                    .padding(8)
-                    .foregroundColor(.white)
-                    .background(.black.opacity(0.75))
-                    .clipShape(Capsule())
-                    .offset(x: -5, y: -5)
+                HStack {
+                    VStack {
+                        Spacer()
+                        
+                        Text(book.date?.formatted(date: .abbreviated, time: .shortened) ?? "")
+                            .font(.caption)
+                            .fontWeight(.black)
+                            .padding(8)
+                            .foregroundColor(.white)
+                            .background(.black.opacity(0.75))
+                            .clipShape(Capsule())
+                            .offset(x: 5, y: -5)
+                    }
+                    
+                    Spacer()
+                    
+                    VStack {
+                        Spacer()
+                        
+                        Text(book.genre?.uppercased() ?? "FANTASY")
+                            .font(.caption)
+                            .fontWeight(.black)
+                            .padding(8)
+                            .foregroundColor(.white)
+                            .background(.black.opacity(0.75))
+                            .clipShape(Capsule())
+                            .offset(x: -5, y: -5)
+                    }
+                }
             }
+            
             Text(book.author ?? "Unknown author")
                 .font(.title)
                 .foregroundColor(.secondary)
@@ -74,6 +95,7 @@ struct DetailView_Previews: PreviewProvider {
         book.genre = "Fantasy"
         book.rating = Int16(4)
         book.review = "This was a great book; I really enjoyed it."
+        book.date = Date.now
         
         return NavigationView() {
             DetailView(book: book)
