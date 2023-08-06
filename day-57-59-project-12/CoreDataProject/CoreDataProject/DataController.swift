@@ -9,7 +9,7 @@ import CoreData
 import Foundation
 
 class DataController: ObservableObject {
-    let container = NSPersistentContainer(name: "Movie")
+    let container = NSPersistentContainer(name: "CoreDataProjectApp")
     
     init() {
         container.loadPersistentStores() { description, error in
@@ -17,5 +17,7 @@ class DataController: ObservableObject {
                 print("Core Data failed to load: \(error.localizedDescription)")
             }
         }
+        
+        self.container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
     }
 }
