@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.managedObjectContext) var moc
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        Button("Save") {
+            if moc.hasChanges {
+                try? moc.save()
+            }
+           
         }
-        .padding()
     }
 }
 
