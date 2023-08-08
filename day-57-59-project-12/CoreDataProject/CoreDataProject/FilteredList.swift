@@ -13,8 +13,12 @@ struct FilteredList<T: NSManagedObject, Content: View>: View {
     // this is our content closure; we'll call this once for each item in the list
     let content: (T) -> Content
     
-    init(filterKey: String, filterValue: String, @ViewBuilder content: @escaping (T) -> Content) {
-        _fetchRequest = FetchRequest<T>(sortDescriptors: [], predicate: NSPredicate(format: "%K BEGINSWITH %@", filterKey, filterValue))
+    enum Predicate: String {
+        case beginsWith = "BEGINSWITH"
+    }
+    
+    init(filterKey: String, filterValue: String, predicate: Predicate, sortDescriptors: [NSSortDescriptor], @ViewBuilder content: @escaping (T) -> Content) {
+        _fetchRequest = FetchRequest<T>(sortDescriptors: sortDescriptors, predicate: NSPredicate(format: "%K \(predicate.rawValue) %@", filterKey, filterValue))
         self.content = content
     }
     
