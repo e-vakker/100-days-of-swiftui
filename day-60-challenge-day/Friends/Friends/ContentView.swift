@@ -8,14 +8,42 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var model = Model()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationStack {
+            List {
+                ForEach(model.users, id: \.id) { user in
+                    NavigationLink {
+                        UserDetailView(user: user)
+                    } label: {
+                        UserView(name: user.name, email: user.email)
+                    }
+                    
+                }
+            }
+            .navigationTitle("Friends")
         }
-        .padding()
+        .task {
+            await loadData()
+            model.userSort()
+        }
+    }
+    
+    func loadData() async {
+        guard let url = URL(string: "https://www.hackingwithswift.com/samples/friendface.json") else {
+            print("Invalid URL")
+            return
+        }
+        
+        do {
+            let (data, _) = try await URLSession.shared.data(from: url)
+            if let decodedResponse = try? JSONDecoder().decode([User].self, from: data) {
+                model.users = decodedResponse
+            }
+        } catch {
+            print("invalid data")
+        }
     }
 }
 
