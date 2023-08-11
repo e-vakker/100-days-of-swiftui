@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Model: ObservableObject, Codable {
+class Model: ObservableObject, Decodable {
     @Published var users: [User] = []
     
     enum CodingKeys: CodingKey {
@@ -21,14 +21,19 @@ class Model: ObservableObject, Codable {
     
     init() { }
     
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(users, forKey: .users)
-    }
-    
-    func userSort() {
-        users.sort {
-            $0.name < $1.name
+    func JSONLoader() async {
+        guard let url = URL(string: "https://www.hackingwithswift.com/samples/friendface.json") else {
+            print("Invalid URL")
+            return
+        }
+        
+        do {
+            let (data, _) = try await URLSession.shared.data(from: url)
+            if let decodedResponse = try? JSONDecoder().decode([User].self, from: data) {
+                self.users = decodedResponse
+            }
+        } catch {
+            print("invalid data")
         }
     }
 }
