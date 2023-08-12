@@ -8,35 +8,35 @@
 import SwiftUI
 
 struct UserDetailView: View {
-    let user: User
+    let user: CachedUser
     
     var body: some View {
         NavigationStack {
             Form {
                 Section(header: Text("User Information")) {
-                    HStackWithTopAlignment(label: "Name", value: user.name)
+                    HStackWithTopAlignment(label: "Name", value: user.wrappedName)
                     HStackWithTopAlignment(label: "User Active", value: user.isActive ? "Yes" : "No")
                     HStackWithTopAlignment(label: "Age", value: "\(user.age)")
-                    HStackWithTopAlignment(label: "Company", value: user.company)
-                    HStackWithTopAlignment(label: "Email", value: user.email)
-                    HStackWithTopAlignment(label: "Address", value: user.address)
-                    HStackWithTopAlignment(label: "About", value: user.about)
-                    HStackWithTopAlignment(label: "Registered", value: dateFormatted(date: user.registered))
+                    HStackWithTopAlignment(label: "Company", value: user.wrappedCompany)
+                    HStackWithTopAlignment(label: "Email", value: user.wrappedEmail)
+                    HStackWithTopAlignment(label: "Address", value: user.wrappedAddress)
+                    HStackWithTopAlignment(label: "About", value: user.wrappedAbout)
+                    HStackWithTopAlignment(label: "Registered", value: user.wrappedRegistered)
                 }
                 
                 Section(header: Text("Tags")) {
-                    ForEach(user.tags, id: \.self) { tag in
+                    ForEach(user.wrappedTags, id: \.self) { tag in
                         Text(tag)
                     }
                 }
                 
                 Section(header: Text("Friends")) {
-                    ForEach(user.friends, id: \.id) { friend in
-                        Text(friend.name)
+                    ForEach(user.friendsArray, id: \.id) { friend in
+                        Text(friend.wrappedName)
                     }
                 }
             }
-            .navigationTitle(user.name)
+            .navigationTitle(user.wrappedName)
         }
     }
     
@@ -53,38 +53,28 @@ struct UserDetailView: View {
             }
         }
     }
-    
-    func dateFormatted(date: String) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        if let date = dateFormatter.date(from: date) {
-            dateFormatter.dateFormat = "MMM dd, yyyy"
-            return dateFormatter.string(from: date)
-        } else {
-            return date
-        }
-    }
 }
 
 struct UserDetailView_Previews: PreviewProvider {
+    static var dataController = DataController()
+    
     static var previews: some View {
-        let user = User(
-            id: "123",
-            isActive: true,
-            name: "John Doe",
-            age: 30,
-            company: "ABC Inc.",
-            email: "john@example.com",
-            address: "123 Main St, City, Country",
-            about: "Lorem ipsum dolor sit amet..mfnrmjgnerjkgnerkjgnekgnerkgjnerkjgnerk",
-            registered: "2023-08-09T12:34:56Z",
-            tags: ["tag1", "tag2", "tag3"],
-            friends: [
-                User.Friend(id: "456", name: "Alice"),
-                User.Friend(id: "789", name: "Bob")
-            ]
-        )
+        let user = CachedUser(context: dataController.container.viewContext)
+        user.id = "123"
+        user.name = "John Doe"
+        user.isActive = true
+        user.age = 30
+        user.company = "Example Company"
+        user.email = "john@example.com"
+        user.address = "123 Main St, City"
+        user.about = "Lorem ipsum dolor sit amet...frsmfgn rkngfjrsngfjrsgjrgn sgsk"
+        user.registered = "2015-11-10T01:47:18-00:00"
+        user.tags = "tag1,tag2,tag3,tag3"
         
-        UserDetailView(user: user)
+        return Group {
+            UserDetailView(user: user)
+                .environment(\.managedObjectContext, dataController.container.viewContext)
+                .environmentObject(dataController)
+        }
     }
 }

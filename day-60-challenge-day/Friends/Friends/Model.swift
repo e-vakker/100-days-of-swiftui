@@ -20,22 +20,6 @@ class Model: ObservableObject, Decodable {
     }
     
     init() { }
-    
-    func JSONLoader() async {
-        guard let url = URL(string: "https://www.hackingwithswift.com/samples/friendface.json") else {
-            print("Invalid URL")
-            return
-        }
-        
-        do {
-            let (data, _) = try await URLSession.shared.data(from: url)
-            if let decodedResponse = try? JSONDecoder().decode([User].self, from: data) {
-                self.users = decodedResponse
-            }
-        } catch {
-            print("invalid data")
-        }
-    }
 }
 
 struct User: Codable, Identifiable {

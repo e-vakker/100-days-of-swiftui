@@ -62,6 +62,10 @@ extension CachedUser {
             $0.wrappedName < $1.wrappedName
         }
     }
+    
+    public var wrappedTags: [String] {
+        tags?.components(separatedBy: ",") ?? [""]
+    }
 }
 
 // MARK: Generated accessors for friends
@@ -91,15 +95,17 @@ extension CachedUser {
         registered = {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+            
             if let date = dateFormatter.date(from: user.registered) {
                 dateFormatter.dateFormat = "MMM dd, yyyy"
                 return dateFormatter.string(from: date)
             } else {
-                return user.registered
+                return "Unknown date"
             }
         }()
         tags = {
-            user.tags.joined(separator: ",")
+            let tags = Set(user.tags)
+            return tags.joined(separator: ",")
         }()
         
         // adding friends

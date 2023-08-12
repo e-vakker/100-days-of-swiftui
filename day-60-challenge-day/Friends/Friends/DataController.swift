@@ -19,21 +19,5 @@ class DataController: ObservableObject {
         }
         self.container.viewContext.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
         
-        
-    }
-    
-    func saveUsersToCoreData(users: [User], context: NSManagedObjectContext) {
-        for user in users {
-            let cashedUser = CachedUser(context: context)
-            cashedUser.update(with: user, context: context)
-        }
-        
-        do {
-            if context.hasChanges {
-                try context.save()
-            }
-        } catch {
-            print("Error saving to Core Data: \(error)")
-        }
     }
 }
