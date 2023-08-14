@@ -1,5 +1,5 @@
 //
-//  ContentView2.swift
+//  Day62View.swift
 //  Instafilter
 //
 //  Created by Jevgeni Vakker on 14.08.2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView2: View {
+struct Day62View: View {
     @State private var blurAmount: Double = 0.0
     
     @State private var showingConfirmation = false
@@ -49,8 +49,8 @@ struct ContentView2: View {
     }
 }
 
-struct ContentView2_Previews: PreviewProvider {
+struct Day62View_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView2()
+        Day62View()
     }
 }
