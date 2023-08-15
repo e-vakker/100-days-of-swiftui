@@ -24,7 +24,7 @@ struct Day_63: View {
             }
         }
         .sheet(isPresented: $showingImagePicker) {
-            ImagePicker()
+//            ImagePicker()
         }
         .onAppear {
 //            loadImage()
