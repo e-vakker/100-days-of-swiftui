@@ -11,9 +11,17 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var image: Image?
+    
     @State private var filterIntensity: Float = 0.5
+    @State private var filterRadius: Float = 0.5
+    @State private var filterScale: Float = 0.5
     
     @State private var showingImagePicker = false
+    
+    @State private var showingAlert = false
+    @State private var alertTitle = ""
+    @State private var alertMessage = ""
+    
     @State private var inputImage: UIImage?
     @State private var processedImage: UIImage?
     
@@ -25,31 +33,14 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                ZStack {
-                    Rectangle()
-                        .fill(.secondary)
-                    
-                    Text("Tap to select a picture")
-                        .foregroundColor(.white)
-                        .font(.headline)
-                    
-                    image?
-                        .resizable()
-                        .scaledToFit()
+                ImageDisplay(image: $image)
+                    .onTapGesture {
+                        showingImagePicker = true
+                    }
+                FilterControls(filterIntensity: $filterIntensity, filterRadius: $filterRadius, filterScale: $filterScale, currentFilter: $currentFilter)
+                .onChange(of: [filterIntensity, filterRadius, filterScale]) { _ in
+                    applyProcessing()
                 }
-                .onTapGesture {
-                    showingImagePicker = true
-                }
-                
-                HStack {
-                    Text("Intensity")
-                    Slider(value: $filterIntensity)
-                        .onChange(of: filterIntensity) { _ in
-                            applyProcessing()
-                        }
-                }
-                .padding(.vertical)
-                
                 HStack {
                     Button("Change filter") {
                         showingFilterSheet = true
@@ -58,6 +49,7 @@ struct ContentView: View {
                     Spacer()
                     
                     Button("Save", action: save)
+                        .disabled(image != nil ? false : true)
                 }
             }
             .padding([.horizontal, .bottom])
@@ -69,14 +61,25 @@ struct ContentView: View {
                 ImagePicker(image: $inputImage)
             }
             .confirmationDialog("Select a filter", isPresented: $showingFilterSheet) {
-                Button("Crystallize") { setFilter(CIFilter.crystallize()) }
-                Button("Edges") { setFilter(CIFilter.edges()) }
-                Button("Gaussian Blur") { setFilter(CIFilter.gaussianBlur()) }
-                Button("Pixellate") { setFilter(CIFilter.pixellate()) }
-                Button("Sepia Tone") { setFilter(CIFilter.sepiaTone()) }
-                Button("Unsharp Mask") { setFilter(CIFilter.unsharpMask()) }
-                Button("Vignette") { setFilter(CIFilter.vignette()) }
-                Button("Cancel", role: .cancel) { }
+                VStack {
+                    Button("Crystallize") { setFilter(CIFilter.crystallize()) }
+                    Button("Edges") { setFilter(CIFilter.edges()) }
+                    Button("Gaussian Blur") { setFilter(CIFilter.gaussianBlur()) }
+                    Button("Pixellate") { setFilter(CIFilter.pixellate()) }
+                    Button("Sepia Tone") { setFilter(CIFilter.sepiaTone()) }
+                }
+                VStack {
+                    Button("Unsharp Mask") { setFilter(CIFilter.unsharpMask()) }
+                    Button("Vignette") { setFilter(CIFilter.vignette()) }
+                    Button("Bump Distortion") { setFilter(CIFilter.bumpDistortion()) }
+                    Button("Hole Distortion") { setFilter(CIFilter.holeDistortion()) }
+                    Button("Twirl Distortion") { setFilter(CIFilter.twirlDistortion()) }
+                    Button("Cancel", role: .cancel) { }
+                }
+            }
+            .alert("\(alertTitle)", isPresented: $showingAlert) {
+                Text("\(alertMessage)")
+                Button("OK") { }
             }
         }
     }
@@ -95,11 +98,13 @@ struct ContentView: View {
         let imageSaver = ImageSaver()
         
         imageSaver.successHandler = {
-            print("Success!")
+            showAlert(title: "Success!", message: "Your image is saved")
+            showingAlert = true
         }
         
         imageSaver.errorHandler = {
-            print("Oops: \($0.localizedDescription)")
+            showAlert(title: "Error!", message: "Oops: \($0.localizedDescription)")
+            showingAlert = true
         }
         
         imageSaver.writeToPhotoAlbum(image: processedImage)
@@ -112,10 +117,10 @@ struct ContentView: View {
             currentFilter.setValue(filterIntensity, forKey: kCIInputIntensityKey)
         }
         if inputKeys.contains(kCIInputRadiusKey) {
-            currentFilter.setValue(filterIntensity * 200, forKey: kCIInputRadiusKey)
+            currentFilter.setValue(filterRadius * 200, forKey: kCIInputRadiusKey)
         }
         if inputKeys.contains(kCIInputScaleKey) {
-            currentFilter.setValue(filterIntensity * 10, forKey: kCIInputScaleKey)
+            currentFilter.setValue(filterScale * 10, forKey: kCIInputScaleKey)
         }
         
         guard let outputImage = currentFilter.outputImage else { return }
@@ -131,6 +136,12 @@ struct ContentView: View {
     func setFilter(_ filter: CIFilter) {
         currentFilter = filter
         loadImage()
+    }
+    
+    func showAlert(title: String, message: String) {
+        alertTitle = title
+        alertMessage = message
+        showingAlert = true
     }
 }
 

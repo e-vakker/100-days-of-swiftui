@@ -13,6 +13,8 @@
 		EC469D5B2A8A45AE0087FD6D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC469D5A2A8A45AE0087FD6D /* Preview Assets.xcassets */; };
 		EC469D682A8A65ED0087FD6D /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC469D672A8A65ED0087FD6D /* ImagePicker.swift */; };
 		EC602D022A8C0927004E6ED0 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC602D012A8C0927004E6ED0 /* ImageSaver.swift */; };
+		EC7B1A1B2A8F9D5500C5587F /* ImageDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7B1A1A2A8F9D5500C5587F /* ImageDisplay.swift */; };
+		EC7B1A1D2A8F9EEB00C5587F /* FilterControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7B1A1C2A8F9EEB00C5587F /* FilterControls.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		EC469D5A2A8A45AE0087FD6D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EC469D672A8A65ED0087FD6D /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		EC602D012A8C0927004E6ED0 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
+		EC7B1A1A2A8F9D5500C5587F /* ImageDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDisplay.swift; sourceTree = "<group>"; };
+		EC7B1A1C2A8F9EEB00C5587F /* FilterControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterControls.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,8 @@
 			children = (
 				EC469D532A8A45AC0087FD6D /* InstafilterApp.swift */,
 				EC469D552A8A45AC0087FD6D /* ContentView.swift */,
+				EC7B1A1C2A8F9EEB00C5587F /* FilterControls.swift */,
+				EC7B1A1A2A8F9D5500C5587F /* ImageDisplay.swift */,
 				EC602D012A8C0927004E6ED0 /* ImageSaver.swift */,
 				EC469D672A8A65ED0087FD6D /* ImagePicker.swift */,
 				EC469D572A8A45AE0087FD6D /* Assets.xcassets */,
@@ -146,6 +152,8 @@
 				EC602D022A8C0927004E6ED0 /* ImageSaver.swift in Sources */,
 				EC469D562A8A45AC0087FD6D /* ContentView.swift in Sources */,
 				EC469D682A8A65ED0087FD6D /* ImagePicker.swift in Sources */,
+				EC7B1A1D2A8F9EEB00C5587F /* FilterControls.swift in Sources */,
+				EC7B1A1B2A8F9D5500C5587F /* ImageDisplay.swift in Sources */,
 				EC469D542A8A45AC0087FD6D /* InstafilterApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

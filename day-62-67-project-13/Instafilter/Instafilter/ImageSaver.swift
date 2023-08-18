@@ -21,6 +21,7 @@ class ImageSaver: NSObject {
         } else {
             successHandler?()
         }
+        print("Picture saved successfully")
     }
 }
         
