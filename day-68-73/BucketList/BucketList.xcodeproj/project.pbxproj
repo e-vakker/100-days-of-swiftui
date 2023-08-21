@@ -11,6 +11,8 @@
 		EC6852DB2A936E3800A2758E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6852DA2A936E3800A2758E /* ContentView.swift */; };
 		EC6852DD2A936E3900A2758E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC6852DC2A936E3900A2758E /* Assets.xcassets */; };
 		EC6852E02A936E3900A2758E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC6852DF2A936E3900A2758E /* Preview Assets.xcassets */; };
+		EC6852E72A9377B600A2758E /* MapKitDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6852E62A9377B500A2758E /* MapKitDemo.swift */; };
+		EC6852EA2A9379F500A2758E /* FaceIdDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6852E92A9379F500A2758E /* FaceIdDemo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,9 @@
 		EC6852DA2A936E3800A2758E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EC6852DC2A936E3900A2758E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC6852DF2A936E3900A2758E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EC6852E62A9377B500A2758E /* MapKitDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitDemo.swift; sourceTree = "<group>"; };
+		EC6852E82A9379AB00A2758E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		EC6852E92A9379F500A2758E /* FaceIdDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIdDemo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +56,11 @@
 		EC6852D72A936E3800A2758E /* BucketList */ = {
 			isa = PBXGroup;
 			children = (
+				EC6852E82A9379AB00A2758E /* Info.plist */,
 				EC6852D82A936E3800A2758E /* BucketListApp.swift */,
 				EC6852DA2A936E3800A2758E /* ContentView.swift */,
+				EC6852E62A9377B500A2758E /* MapKitDemo.swift */,
+				EC6852E92A9379F500A2758E /* FaceIdDemo.swift */,
 				EC6852DC2A936E3900A2758E /* Assets.xcassets */,
 				EC6852DE2A936E3900A2758E /* Preview Content */,
 			);
@@ -137,6 +145,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC6852EA2A9379F500A2758E /* FaceIdDemo.swift in Sources */,
+				EC6852E72A9377B600A2758E /* MapKitDemo.swift in Sources */,
 				EC6852DB2A936E3800A2758E /* ContentView.swift in Sources */,
 				EC6852D92A936E3800A2758E /* BucketListApp.swift in Sources */,
 			);
@@ -270,6 +280,8 @@
 				DEVELOPMENT_TEAM = K3GPQDGVF5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BucketList/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "We need to unlock your data";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -299,6 +311,8 @@
 				DEVELOPMENT_TEAM = K3GPQDGVF5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BucketList/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "We need to unlock your data";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
