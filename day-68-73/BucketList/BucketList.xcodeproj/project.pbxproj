@@ -14,6 +14,7 @@
 		EC6852EA2A9379F500A2758E /* FaceIdDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6852E92A9379F500A2758E /* FaceIdDemo.swift */; };
 		EC6852EC2A9387BD00A2758E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6852EB2A9387BD00A2758E /* Location.swift */; };
 		EC6852EE2A9394CA00A2758E /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6852ED2A9394CA00A2758E /* EditView.swift */; };
+		ECB0D8482A955C670007B04B /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB0D8472A955C670007B04B /* Result.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,10 +23,10 @@
 		EC6852DA2A936E3800A2758E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EC6852DC2A936E3900A2758E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC6852DF2A936E3900A2758E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		EC6852E82A9379AB00A2758E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		EC6852E92A9379F500A2758E /* FaceIdDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIdDemo.swift; sourceTree = "<group>"; };
 		EC6852EB2A9387BD00A2758E /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		EC6852ED2A9394CA00A2758E /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
+		ECB0D8472A955C670007B04B /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,9 +59,9 @@
 		EC6852D72A936E3800A2758E /* BucketList */ = {
 			isa = PBXGroup;
 			children = (
-				EC6852E82A9379AB00A2758E /* Info.plist */,
 				EC6852D82A936E3800A2758E /* BucketListApp.swift */,
 				EC6852DA2A936E3800A2758E /* ContentView.swift */,
+				ECB0D8472A955C670007B04B /* Result.swift */,
 				EC6852ED2A9394CA00A2758E /* EditView.swift */,
 				EC6852EB2A9387BD00A2758E /* Location.swift */,
 				EC6852E92A9379F500A2758E /* FaceIdDemo.swift */,
@@ -148,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECB0D8482A955C670007B04B /* Result.swift in Sources */,
 				EC6852EA2A9379F500A2758E /* FaceIdDemo.swift in Sources */,
 				EC6852EE2A9394CA00A2758E /* EditView.swift in Sources */,
 				EC6852EC2A9387BD00A2758E /* Location.swift in Sources */,
@@ -279,7 +281,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"BucketList/Preview Content\"";
 				DEVELOPMENT_TEAM = K3GPQDGVF5;
 				ENABLE_PREVIEWS = YES;
@@ -310,7 +312,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"BucketList/Preview Content\"";
 				DEVELOPMENT_TEAM = K3GPQDGVF5;
 				ENABLE_PREVIEWS = YES;
