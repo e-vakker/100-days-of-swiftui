@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EC62D5CC2A968836006049BE /* ContentView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC62D5CB2A968836006049BE /* ContentView-ViewModel.swift */; };
+		EC62D5CE2A968B6E006049BE /* FileManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC62D5CD2A968B6E006049BE /* FileManager-DocumentsDirectory.swift */; };
 		EC6852D92A936E3800A2758E /* BucketListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6852D82A936E3800A2758E /* BucketListApp.swift */; };
 		EC6852DB2A936E3800A2758E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC6852DA2A936E3800A2758E /* ContentView.swift */; };
 		EC6852DD2A936E3900A2758E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC6852DC2A936E3900A2758E /* Assets.xcassets */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EC62D5CB2A968836006049BE /* ContentView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView-ViewModel.swift"; sourceTree = "<group>"; };
+		EC62D5CD2A968B6E006049BE /* FileManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
 		EC6852D52A936E3800A2758E /* BucketList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BucketList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC6852D82A936E3800A2758E /* BucketListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BucketListApp.swift; sourceTree = "<group>"; };
 		EC6852DA2A936E3800A2758E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -61,7 +65,9 @@
 			children = (
 				EC6852D82A936E3800A2758E /* BucketListApp.swift */,
 				EC6852DA2A936E3800A2758E /* ContentView.swift */,
+				EC62D5CD2A968B6E006049BE /* FileManager-DocumentsDirectory.swift */,
 				ECB0D8472A955C670007B04B /* Result.swift */,
+				EC62D5CB2A968836006049BE /* ContentView-ViewModel.swift */,
 				EC6852ED2A9394CA00A2758E /* EditView.swift */,
 				EC6852EB2A9387BD00A2758E /* Location.swift */,
 				EC6852E92A9379F500A2758E /* FaceIdDemo.swift */,
@@ -154,6 +160,8 @@
 				EC6852EE2A9394CA00A2758E /* EditView.swift in Sources */,
 				EC6852EC2A9387BD00A2758E /* Location.swift in Sources */,
 				EC6852DB2A936E3800A2758E /* ContentView.swift in Sources */,
+				EC62D5CC2A968836006049BE /* ContentView-ViewModel.swift in Sources */,
+				EC62D5CE2A968B6E006049BE /* FileManager-DocumentsDirectory.swift in Sources */,
 				EC6852D92A936E3800A2758E /* BucketListApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
