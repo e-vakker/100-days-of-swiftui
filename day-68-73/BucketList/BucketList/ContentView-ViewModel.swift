@@ -20,6 +20,10 @@ extension ContentView {
         
         @Published var isUnlocked = false
         
+        @Published var isShowingAlert = false
+        
+        @Published var alertMessage = ""
+        
         let savePath = FileManager.documentDirectory.appendingPathComponent("SavedPlaces")
         
         init() {
@@ -68,11 +72,15 @@ extension ContentView {
                             self.isUnlocked = true
                         }
                     } else {
-                        // error
+                        Task { @MainActor in
+                            self.isShowingAlert = true
+                            self.alertMessage = "Error"
+                        }
                     }
                 }
             } else {
-                // no biometrics
+                self.isShowingAlert = true
+                self.alertMessage = "No biometrics"
             }
         }
     }
