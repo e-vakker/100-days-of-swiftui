@@ -25,6 +25,7 @@ struct CheckOutView: View {
                     ProgressView()
                 }
                 .frame(height: 233)
+                .accessibilityHidden(true)
                 
                 Text("Your total is \(order.orderDetails.quantity, format: .currency(code: "USD"))")
                     .font(.title)
