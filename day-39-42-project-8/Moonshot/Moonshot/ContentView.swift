@@ -30,6 +30,7 @@ struct ContentView: View {
                     Button(isGrid ? "List" : "Grid") {
                         isGrid.toggle()
                     }
+                    .accessibilityHidden(true)
                 }
             }
             .navigationTitle("Moonshot")

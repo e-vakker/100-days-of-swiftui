@@ -40,6 +40,8 @@ struct CrewView: View {
                                         .foregroundColor(.secondary)
                                 }
                             }
+                            .accessibilityElement(children: .combine)
+                            .accessibilityRemoveTraits(.isImage)
                         }
                     }
                 }
