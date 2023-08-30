@@ -8,14 +8,37 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var viewModel = ViewModel()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationStack {
+            List {
+                ForEach(viewModel.imageWrappers ?? [], id: \.id) { imageWrapper in
+                    imageWrapper.image
+                        .resizable()
+                        .scaledToFit()
+                }
+            }
+            .navigationTitle("MemPix")
+            .toolbar {
+                ToolbarItem(placement: .bottomBar) {
+                    HStack {
+                        Button {
+                            viewModel.showingAddContactSheet = true
+                        } label: {
+                            Image(systemName: "plus.circle.fill")
+                            Text("Add new contact")
+                                .font(.headline)
+                        }
+                        Spacer()
+                    }
+                    
+                }
+            }
+            .sheet(isPresented: $viewModel.showingAddContactSheet) {
+                ImagePicker(image: $viewModel.inputImage)
+            }
         }
-        .padding()
     }
 }
 

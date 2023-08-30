@@ -11,6 +11,11 @@
 		EC53AD672A9E8DE300CA2565 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC53AD662A9E8DE300CA2565 /* ContentView.swift */; };
 		EC53AD692A9E8DE400CA2565 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC53AD682A9E8DE400CA2565 /* Assets.xcassets */; };
 		EC53AD6C2A9E8DE400CA2565 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC53AD6B2A9E8DE400CA2565 /* Preview Assets.xcassets */; };
+		EC53AD732A9E8F2100CA2565 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC53AD722A9E8F2100CA2565 /* ImagePicker.swift */; };
+		EC53AD762A9E96D500CA2565 /* MemPix.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EC53AD742A9E96D500CA2565 /* MemPix.xcdatamodeld */; };
+		EC53AD782A9E976600CA2565 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC53AD772A9E976600CA2565 /* PersistenceController.swift */; };
+		EC53AD7A2A9EA20800CA2565 /* Contact+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC53AD792A9EA20800CA2565 /* Contact+Extensions.swift */; };
+		EC53AD7C2A9FEECA00CA2565 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC53AD7B2A9FEECA00CA2565 /* ContentViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +24,11 @@
 		EC53AD662A9E8DE300CA2565 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EC53AD682A9E8DE400CA2565 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC53AD6B2A9E8DE400CA2565 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EC53AD722A9E8F2100CA2565 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		EC53AD752A9E96D500CA2565 /* MemPix.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MemPix.xcdatamodel; sourceTree = "<group>"; };
+		EC53AD772A9E976600CA2565 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		EC53AD792A9EA20800CA2565 /* Contact+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact+Extensions.swift"; sourceTree = "<group>"; };
+		EC53AD7B2A9FEECA00CA2565 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,8 +62,13 @@
 			isa = PBXGroup;
 			children = (
 				EC53AD642A9E8DE300CA2565 /* MemPixApp.swift */,
+				EC53AD722A9E8F2100CA2565 /* ImagePicker.swift */,
 				EC53AD662A9E8DE300CA2565 /* ContentView.swift */,
+				EC53AD7B2A9FEECA00CA2565 /* ContentViewModel.swift */,
+				EC53AD772A9E976600CA2565 /* PersistenceController.swift */,
+				EC53AD792A9EA20800CA2565 /* Contact+Extensions.swift */,
 				EC53AD682A9E8DE400CA2565 /* Assets.xcassets */,
+				EC53AD742A9E96D500CA2565 /* MemPix.xcdatamodeld */,
 				EC53AD6A2A9E8DE400CA2565 /* Preview Content */,
 			);
 			path = MemPix;
@@ -137,8 +152,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC53AD782A9E976600CA2565 /* PersistenceController.swift in Sources */,
+				EC53AD732A9E8F2100CA2565 /* ImagePicker.swift in Sources */,
+				EC53AD7A2A9EA20800CA2565 /* Contact+Extensions.swift in Sources */,
+				EC53AD7C2A9FEECA00CA2565 /* ContentViewModel.swift in Sources */,
 				EC53AD672A9E8DE300CA2565 /* ContentView.swift in Sources */,
 				EC53AD652A9E8DE300CA2565 /* MemPixApp.swift in Sources */,
+				EC53AD762A9E96D500CA2565 /* MemPix.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +359,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EC53AD742A9E96D500CA2565 /* MemPix.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EC53AD752A9E96D500CA2565 /* MemPix.xcdatamodel */,
+			);
+			currentVersion = EC53AD752A9E96D500CA2565 /* MemPix.xcdatamodel */;
+			path = MemPix.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = EC53AD592A9E8DE300CA2565 /* Project object */;
 }
