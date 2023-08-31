@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var viewModel = ViewModel()
+    @StateObject private var viewModel = ContentViewModel()
     
     var body: some View {
         NavigationStack {
@@ -24,7 +24,7 @@ struct ContentView: View {
                 ToolbarItem(placement: .bottomBar) {
                     HStack {
                         Button {
-                            viewModel.showingAddContactSheet = true
+                            viewModel.showingAddPersonSheet = true
                         } label: {
                             Image(systemName: "plus.circle.fill")
                             Text("Add new contact")
@@ -35,8 +35,8 @@ struct ContentView: View {
                     
                 }
             }
-            .sheet(isPresented: $viewModel.showingAddContactSheet) {
-                ImagePicker(image: $viewModel.inputImage)
+            .sheet(isPresented: $viewModel.showingAddPersonSheet) {
+                AddPerson(viewModel: viewModel)
             }
         }
     }

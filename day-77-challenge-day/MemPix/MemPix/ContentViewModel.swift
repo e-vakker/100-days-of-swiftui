@@ -7,38 +7,31 @@
 
 import SwiftUI
 
-extension ContentView {
-    @MainActor final class ViewModel: ObservableObject {
-        @Published var inputImage: UIImage? {
-            didSet {
-                convertAndAppendImage()
-            }
-        }
+@MainActor final class ContentViewModel: ObservableObject {
+    @Published var imageWrappers: [ImageWrapper]?
+    
+    @Published var showingAddImageSheet = false
+    @Published var showingAddPersonSheet = false
+    
+    func convertAndAppendImage(inputImage: UIImage, firstName: String, lastName: String) {
+        let convertedImage = Image(uiImage: inputImage)
         
-        @Published var imageWrappers: [ImageWrapper]?
-        @Published var showingAddContactSheet = false
+        let wrapper = ImageWrapper(image: convertedImage, firstName: firstName, lastName: lastName)
         
-        func convertAndAppendImage() {
-            if let inputImage = inputImage {
-                let convertedImage = Image(uiImage: inputImage)
-                
-                let wrapper = ImageWrapper(image: convertedImage)
-                
-                if imageWrappers == nil {
-                    imageWrappers = [wrapper]
-                } else {
-                    imageWrappers?.append(wrapper)
-                }
-                
-                self.inputImage = nil
-            }
+        if imageWrappers == nil {
+            imageWrappers = [wrapper]
+        } else {
+            imageWrappers?.append(wrapper)
         }
+        self.showingAddPersonSheet = false
     }
 }
 
 struct ImageWrapper: Identifiable {
     let id = UUID()
     let image: Image
+    let firstName: String
+    let lastName: String
 }
 
 

@@ -16,6 +16,7 @@
 		EC53AD782A9E976600CA2565 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC53AD772A9E976600CA2565 /* PersistenceController.swift */; };
 		EC53AD7A2A9EA20800CA2565 /* Contact+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC53AD792A9EA20800CA2565 /* Contact+Extensions.swift */; };
 		EC53AD7C2A9FEECA00CA2565 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC53AD7B2A9FEECA00CA2565 /* ContentViewModel.swift */; };
+		EC53AD7E2A9FF88200CA2565 /* AddPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC53AD7D2A9FF88200CA2565 /* AddPerson.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		EC53AD772A9E976600CA2565 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		EC53AD792A9EA20800CA2565 /* Contact+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact+Extensions.swift"; sourceTree = "<group>"; };
 		EC53AD7B2A9FEECA00CA2565 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		EC53AD7D2A9FF88200CA2565 /* AddPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPerson.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				EC53AD642A9E8DE300CA2565 /* MemPixApp.swift */,
 				EC53AD722A9E8F2100CA2565 /* ImagePicker.swift */,
 				EC53AD662A9E8DE300CA2565 /* ContentView.swift */,
+				EC53AD7D2A9FF88200CA2565 /* AddPerson.swift */,
 				EC53AD7B2A9FEECA00CA2565 /* ContentViewModel.swift */,
 				EC53AD772A9E976600CA2565 /* PersistenceController.swift */,
 				EC53AD792A9EA20800CA2565 /* Contact+Extensions.swift */,
@@ -154,6 +157,7 @@
 			files = (
 				EC53AD782A9E976600CA2565 /* PersistenceController.swift in Sources */,
 				EC53AD732A9E8F2100CA2565 /* ImagePicker.swift in Sources */,
+				EC53AD7E2A9FF88200CA2565 /* AddPerson.swift in Sources */,
 				EC53AD7A2A9EA20800CA2565 /* Contact+Extensions.swift in Sources */,
 				EC53AD7C2A9FEECA00CA2565 /* ContentViewModel.swift in Sources */,
 				EC53AD672A9E8DE300CA2565 /* ContentView.swift in Sources */,
