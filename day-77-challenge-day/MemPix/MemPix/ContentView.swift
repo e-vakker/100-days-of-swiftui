@@ -14,9 +14,7 @@ struct ContentView: View {
         NavigationStack {
             List {
                 ForEach(viewModel.imageWrappers ?? [], id: \.id) { imageWrapper in
-                    imageWrapper.image
-                        .resizable()
-                        .scaledToFit()
+                    PersonRow(avatar: imageWrapper.image, firstName: imageWrapper.firstName, lastName: imageWrapper.lastName)
                 }
             }
             .navigationTitle("MemPix")
