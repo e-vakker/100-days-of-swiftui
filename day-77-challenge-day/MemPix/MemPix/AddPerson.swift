@@ -14,43 +14,18 @@ struct AddPerson: View {
     
     @State private var firstName = ""
     @State private var lastName = ""
-
+    
     @State private var inputImage: UIImage?
 
     var body: some View {
         NavigationStack {
-            VStack {
-                ZStack {
-                    Rectangle()
-                        .fill(.clear)
-                    if let image = inputImage {
-                        Image(uiImage: image)
-                            .resizable()
-                    } else {
-                        ZStack {
-                            Color.gray.opacity(0.40)
-                            Text("Tap to select an avatar")
-                                .foregroundColor(.primary)
-                                .font(.body)
-                                .onTapGesture {
-                                    viewModel.showingAddImageSheet = true
-                                }
-                        }
-                        
-                    }
-                }
-            }
-            .aspectRatio(1, contentMode: .fit)
-            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-            .overlay {
-                RoundedRectangle(cornerRadius: 20, style: .continuous)
-                    .strokeBorder(.quaternary, lineWidth: 0.5)
-            }
-            .padding(20)
+            photo
             List {
                 Section {
                     TextField("First Name", text: $firstName)
                     TextField("Last Name", text: $lastName)
+                } header: {
+                    Text("Write your friend's first and last name")
                 }
             }
             .navigationTitle("New person")
@@ -65,12 +40,40 @@ struct AddPerson: View {
                     Button("Done") {
                         viewModel.convertAndAppendImage(inputImage: inputImage!, firstName: firstName, lastName: lastName)
                     }
-                    .disabled(inputImage == nil)
+                    .disabled(inputImage == nil || firstName.isEmpty || lastName.isEmpty)
                 }
             }
             .sheet(isPresented: $viewModel.showingAddImageSheet) {
                 ImagePicker(image: $inputImage)
             }
+        }
+    }
+    
+    var photo: some View {
+        VStack {
+            ZStack {
+                Rectangle()
+                    .fill(.clear)
+                if let image = inputImage {
+                    Image(uiImage: image)
+                        .resizable()
+                } else {
+                    ZStack {
+                        Color.gray.opacity(0.40)
+                    }
+                }
+            }
+            .aspectRatio(1, contentMode: .fit)
+            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+            .overlay {
+                RoundedRectangle(cornerRadius: 20, style: .continuous)
+                    .strokeBorder(.quaternary, lineWidth: 0.5)
+            }
+            .padding([.horizontal])
+            Button("Set new photo") {
+                viewModel.showingAddImageSheet = true
+            }
+            .padding()
         }
     }
 }
