@@ -8,13 +8,11 @@
 import SwiftUI
 
 struct PersonRow: View {
-    let avatar: Image
-    let firstName: String
-    let lastName: String
+    let person: PersonWrapper
     
     var body: some View {
         HStack(spacing: 20) {
-            avatar
+            person.image
                 .resizable()
                 .scaledToFill()
                 .frame(width: 75, height: 75)
@@ -24,7 +22,7 @@ struct PersonRow: View {
                     RoundedRectangle(cornerRadius: 20, style: .continuous)
                         .strokeBorder(.quaternary, lineWidth: 0.5)
                 }
-            Text("\(firstName) \(lastName)")
+            Text("\(person.firstName) \(person.lastName)")
             Spacer()
         }
         .frame(height: 75)
@@ -33,7 +31,7 @@ struct PersonRow: View {
 
 struct PersonRow_Previews: PreviewProvider {
     static var previews: some View {
-        PersonRow(avatar: Image("avatar"), firstName: "Pug", lastName: "Pugoff")
+        PersonRow(person: PersonWrapper(image: Image("avatar"), firstName: "Pug", lastName: "Pugoff"))
             .padding()
     }
 }

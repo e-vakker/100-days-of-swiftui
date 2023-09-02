@@ -8,7 +8,7 @@
 import SwiftUI
 
 @MainActor final class ContentViewModel: ObservableObject {
-    @Published var imageWrappers: [ImageWrapper]?
+    @Published var imageWrappers: [PersonWrapper]?
     
     @Published var showingAddImageSheet = false
     @Published var showingAddPersonSheet = false
@@ -16,7 +16,7 @@ import SwiftUI
     func convertAndAppendImage(inputImage: UIImage, firstName: String, lastName: String) {
         let convertedImage = Image(uiImage: inputImage)
         
-        let wrapper = ImageWrapper(image: convertedImage, firstName: firstName, lastName: lastName)
+        let wrapper = PersonWrapper(image: convertedImage, firstName: firstName, lastName: lastName)
         
         if imageWrappers == nil {
             imageWrappers = [wrapper]
@@ -27,7 +27,7 @@ import SwiftUI
     }
 }
 
-struct ImageWrapper: Identifiable {
+struct PersonWrapper: Identifiable {
     let id = UUID()
     let image: Image
     let firstName: String

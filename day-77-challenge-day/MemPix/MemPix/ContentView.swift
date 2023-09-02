@@ -13,8 +13,12 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             List {
-                ForEach(viewModel.imageWrappers ?? [], id: \.id) { imageWrapper in
-                    PersonRow(avatar: imageWrapper.image, firstName: imageWrapper.firstName, lastName: imageWrapper.lastName)
+                ForEach(viewModel.imageWrappers ?? [], id: \.id) { person in
+                    NavigationLink {
+                        PersonDetailView(person: person)
+                    } label: {
+                        PersonRow(person: person)
+                    }
                 }
             }
             .navigationTitle("MemPix")
