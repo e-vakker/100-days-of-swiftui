@@ -8,20 +8,25 @@
 import SwiftUI
 
 struct PersonRow: View {
-    let person: PersonWrapper
+    let person: Contact
     
     var body: some View {
         HStack(spacing: 20) {
-            person.image
-                .resizable()
-                .scaledToFill()
-                .frame(width: 75, height: 75)
-                .clipped()
-                .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                .overlay {
-                    RoundedRectangle(cornerRadius: 20, style: .continuous)
-                        .strokeBorder(.quaternary, lineWidth: 0.5)
-                }
+            let imageURL = FileManager.documentsDirectory.appendingPathComponent("\(person.uuid).jpg")
+            if let image = UIImage(contentsOfFile: imageURL.path()) {
+                Image(uiImage: image)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 75, height: 75)
+                    .clipped()
+                    .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 20, style: .continuous)
+                            .strokeBorder(.quaternary, lineWidth: 0.5)
+                    }
+            } else {
+                Color.gray
+            }
             Text("\(person.firstName) \(person.lastName)")
             Spacer()
         }
@@ -31,7 +36,7 @@ struct PersonRow: View {
 
 struct PersonRow_Previews: PreviewProvider {
     static var previews: some View {
-        PersonRow(person: PersonWrapper(image: Image("avatar"), firstName: "Pug", lastName: "Pugoff"))
+        PersonRow(person: Contact.example)
             .padding()
     }
 }

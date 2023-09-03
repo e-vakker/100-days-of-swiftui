@@ -11,20 +11,22 @@ import CoreData
 
 extension Contact {
     var uuid: UUID {
-        #if DEBUG
-        uuid_!
-        #else
-        uuid_ = UUID()
-        #endif
+        if let uuid = uuid_ {
+            return uuid
+        } else {
+            let newUUID = UUID()
+            uuid_ = newUUID
+            return newUUID
+        }
     }
     
     var firstName: String {
-        get { firstName_ ?? "" }
+        get { firstName_ ?? "Error" }
         set { firstName_ = newValue }
     }
     
     var lastName: String {
-        get { lastName_ ?? "" }
+        get { lastName_ ?? "Error" }
         set { lastName_ = newValue }
     }
     
@@ -40,4 +42,31 @@ extension Contact {
         self.uuid_ = UUID()
     }
     
+    static func delete(contact: Contact) {
+        guard let context = contact.managedObjectContext else { return }
+        
+        context.delete(contact)
+    }
+    
+//    static func fetch(_ predicate: NSPredicate) -> NSFetchRequest<Contact> {
+//        let request = Contact.fetchRequest()
+//        request.sortDescriptors = [NSSortDescriptor(keyPath: \Contact.lastName_, ascending: true)]
+//        request.predicate = predicate
+//
+//        return request
+//    }
+    
+    //MARK: - Preview helper
+    
+    static var example: Contact {
+        let context = PersistenceController.preview.container.viewContext
+        let contact = Contact(firstName: "Pug", lastName: "Pugoff", context: context)
+        return contact
+    }
+}
+
+extension Contact: Comparable {
+    public static func < (lhs: Contact, rhs: Contact) -> Bool {
+        lhs.lastName < rhs.lastName
+    }
 }

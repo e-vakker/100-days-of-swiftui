@@ -8,25 +8,30 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var viewModel = ContentViewModel()
+    
+    @Environment(\.managedObjectContext) var context
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.lastName_)]) var persons: FetchedResults<Contact>
+    
+    @State var showingAddPersonSheet = false
     
     var body: some View {
         NavigationStack {
             List {
-                ForEach(viewModel.imageWrappers ?? [], id: \.id) { person in
+                ForEach(persons, id: \.id) { person in
                     NavigationLink {
                         PersonDetailView(person: person)
                     } label: {
                         PersonRow(person: person)
                     }
                 }
+                .onDelete(perform: removePersons)
             }
             .navigationTitle("MemPix")
             .toolbar {
                 ToolbarItem(placement: .bottomBar) {
                     HStack {
                         Button {
-                            viewModel.showingAddPersonSheet = true
+                            showingAddPersonSheet = true
                         } label: {
                             Image(systemName: "plus.circle.fill")
                             Text("Add new contact")
@@ -37,9 +42,20 @@ struct ContentView: View {
                     
                 }
             }
-            .sheet(isPresented: $viewModel.showingAddPersonSheet) {
-                AddPerson(viewModel: viewModel)
+            .sheet(isPresented: $showingAddPersonSheet) {
+                AddPerson()
             }
+            .toolbar {
+                EditButton()
+            }
+        }
+
+    }
+    
+    func removePersons(at offsets: IndexSet) {
+        for index in offsets {
+            let person = persons[index]
+            context.delete(person)
         }
     }
 }
@@ -47,5 +63,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
     }
 }

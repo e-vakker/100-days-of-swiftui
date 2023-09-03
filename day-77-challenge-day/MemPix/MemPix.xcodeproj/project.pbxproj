@@ -15,10 +15,10 @@
 		EC53AD762A9E96D500CA2565 /* MemPix.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EC53AD742A9E96D500CA2565 /* MemPix.xcdatamodeld */; };
 		EC53AD782A9E976600CA2565 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC53AD772A9E976600CA2565 /* PersistenceController.swift */; };
 		EC53AD7A2A9EA20800CA2565 /* Contact+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC53AD792A9EA20800CA2565 /* Contact+Extensions.swift */; };
-		EC53AD7C2A9FEECA00CA2565 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC53AD7B2A9FEECA00CA2565 /* ContentViewModel.swift */; };
 		EC53AD7E2A9FF88200CA2565 /* AddPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC53AD7D2A9FF88200CA2565 /* AddPerson.swift */; };
 		ECE026FA2AA20BB700D3D26B /* PersonRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE026F92AA20BB700D3D26B /* PersonRow.swift */; };
 		ECE026FC2AA212EB00D3D26B /* PersonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE026FB2AA212EB00D3D26B /* PersonDetailView.swift */; };
+		ECE027022AA519F300D3D26B /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE027012AA519F300D3D26B /* FileManager+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,10 +31,10 @@
 		EC53AD752A9E96D500CA2565 /* MemPix.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MemPix.xcdatamodel; sourceTree = "<group>"; };
 		EC53AD772A9E976600CA2565 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		EC53AD792A9EA20800CA2565 /* Contact+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact+Extensions.swift"; sourceTree = "<group>"; };
-		EC53AD7B2A9FEECA00CA2565 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		EC53AD7D2A9FF88200CA2565 /* AddPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPerson.swift; sourceTree = "<group>"; };
 		ECE026F92AA20BB700D3D26B /* PersonRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonRow.swift; sourceTree = "<group>"; };
 		ECE026FB2AA212EB00D3D26B /* PersonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailView.swift; sourceTree = "<group>"; };
+		ECE027012AA519F300D3D26B /* FileManager+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,8 +73,8 @@
 				ECE026FB2AA212EB00D3D26B /* PersonDetailView.swift */,
 				EC53AD7D2A9FF88200CA2565 /* AddPerson.swift */,
 				ECE026F92AA20BB700D3D26B /* PersonRow.swift */,
-				EC53AD7B2A9FEECA00CA2565 /* ContentViewModel.swift */,
 				EC53AD772A9E976600CA2565 /* PersistenceController.swift */,
+				ECE027012AA519F300D3D26B /* FileManager+Extensions.swift */,
 				EC53AD792A9EA20800CA2565 /* Contact+Extensions.swift */,
 				EC53AD682A9E8DE400CA2565 /* Assets.xcassets */,
 				EC53AD742A9E96D500CA2565 /* MemPix.xcdatamodeld */,
@@ -164,10 +164,10 @@
 				EC53AD782A9E976600CA2565 /* PersistenceController.swift in Sources */,
 				ECE026FA2AA20BB700D3D26B /* PersonRow.swift in Sources */,
 				ECE026FC2AA212EB00D3D26B /* PersonDetailView.swift in Sources */,
+				ECE027022AA519F300D3D26B /* FileManager+Extensions.swift in Sources */,
 				EC53AD732A9E8F2100CA2565 /* ImagePicker.swift in Sources */,
 				EC53AD7E2A9FF88200CA2565 /* AddPerson.swift in Sources */,
 				EC53AD7A2A9EA20800CA2565 /* Contact+Extensions.swift in Sources */,
-				EC53AD7C2A9FEECA00CA2565 /* ContentViewModel.swift in Sources */,
 				EC53AD672A9E8DE300CA2565 /* ContentView.swift in Sources */,
 				EC53AD652A9E8DE300CA2565 /* MemPixApp.swift in Sources */,
 				EC53AD762A9E96D500CA2565 /* MemPix.xcdatamodeld in Sources */,

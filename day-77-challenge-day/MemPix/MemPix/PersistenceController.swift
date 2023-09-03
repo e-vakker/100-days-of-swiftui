@@ -9,8 +9,9 @@ import Foundation
 import CoreData
 
 class PersistenceController {
+    // A singleton for our entire app to use
     static let shared = PersistenceController()
-    
+    // Storage for Core Data
     let container: NSPersistentContainer
     
     init(inMemory: Bool = false) {
@@ -27,14 +28,26 @@ class PersistenceController {
         }
     }
     
+    func save() {
+        let context = container.viewContext
+        
+        guard context.hasChanges else { return }
+        
+        do {
+            try context.save()
+        } catch {
+            print("error saving context: \(error)")
+        }
+    }
+    
     //MARK: - SwiftUI Preview helper
     
     static var preview: PersistenceController {
         let controller = PersistenceController(inMemory: true)
-        let context = controller.container.viewContext
         
-        for index in 0..<10 {
-            let person = Contact(firstName: "First name", lastName: "Last name \(index)", context: context)
+        // Create 10 examples
+        for i in 0..<10 {
+            let person = Contact(firstName: "First name \(i)", lastName: "Last name \(i)", context: controller.container.viewContext)
         }
         
         return controller

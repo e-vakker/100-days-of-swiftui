@@ -9,17 +9,19 @@ import SwiftUI
 
 struct AddPerson: View {
     @Environment(\.dismiss) var dismiss
+    @Environment(\.managedObjectContext) var context
     
-    @ObservedObject var viewModel: ContentViewModel
+    @State var showingAddImageSheet = false
     
-    @State private var firstName = ""
-    @State private var lastName = ""
+    @State var firstName = ""
+    @State var lastName = ""
     
-    @State private var inputImage: UIImage?
-
+    @State var inputImage: UIImage?
+    
     var body: some View {
         NavigationStack {
             photo
+            
             List {
                 Section {
                     TextField("First Name", text: $firstName)
@@ -38,15 +40,31 @@ struct AddPerson: View {
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Done") {
-                        viewModel.convertAndAppendImage(inputImage: inputImage!, firstName: firstName, lastName: lastName)
+                        savePerson()
                     }
                     .disabled(inputImage == nil || firstName.isEmpty || lastName.isEmpty)
                 }
             }
-            .sheet(isPresented: $viewModel.showingAddImageSheet) {
+            .sheet(isPresented: $showingAddImageSheet) {
                 ImagePicker(image: $inputImage)
             }
         }
+    }
+    
+    func savePerson() {
+        let person = Contact(firstName: firstName, lastName: lastName, context: context)
+        let id = person.uuid
+        // Generate a unique filename using UUID
+        let uniqueFileName = id.uuidString + ".jpg"
+        
+        if let image = inputImage {
+            if let data = image.jpegData(compressionQuality: 0.8) {
+                let filename = FileManager.documentsDirectory.appendingPathComponent(uniqueFileName)
+                try? data.write(to: filename)
+            }
+        }
+        PersistenceController.shared.save()
+        dismiss()
     }
     
     var photo: some View {
@@ -71,7 +89,7 @@ struct AddPerson: View {
             }
             .padding([.horizontal])
             Button("Set new photo") {
-                viewModel.showingAddImageSheet = true
+                showingAddImageSheet = true
             }
             .padding()
         }
@@ -80,6 +98,6 @@ struct AddPerson: View {
 
 struct AddNameToPicture_Previews: PreviewProvider {
     static var previews: some View {
-        AddPerson(viewModel: ContentViewModel())
+        AddPerson()
     }
 }

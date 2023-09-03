@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PersonDetailView: View {
-    let person: PersonWrapper
+    let person: Contact
 
     var body: some View {
         ZStack {
@@ -19,9 +19,14 @@ struct PersonDetailView: View {
                 Color.clear
                     .aspectRatio(1, contentMode: .fit)
                     .overlay {
-                        person.image
-                            .resizable()
-                            .scaledToFill()
+                        let imageURL = FileManager.documentsDirectory.appendingPathComponent("\(person.uuid).jpg")
+                        if let image = UIImage(contentsOfFile: imageURL.path()) {
+                            Image(uiImage: image)
+                                .resizable()
+                                .scaledToFit()
+                        } else {
+                            Color.gray
+                        }
                     }
                     .clipped()
                     .overlay() {
@@ -44,6 +49,6 @@ struct PersonDetailView: View {
 
 struct PersonDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        PersonDetailView(person: PersonWrapper(image: Image("avatar"), firstName: "Pug", lastName: "Pugoff"))
+        PersonDetailView(person: Contact.example)
     }
 }
