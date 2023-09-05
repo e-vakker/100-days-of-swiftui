@@ -16,6 +16,7 @@
 		EC53AD782A9E976600CA2565 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC53AD772A9E976600CA2565 /* PersistenceController.swift */; };
 		EC53AD7A2A9EA20800CA2565 /* Contact+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC53AD792A9EA20800CA2565 /* Contact+Extensions.swift */; };
 		EC53AD7E2A9FF88200CA2565 /* AddPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC53AD7D2A9FF88200CA2565 /* AddPerson.swift */; };
+		ECC2FBF32AA7CCAD00DD0114 /* Rounded+ViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC2FBF22AA7CCAD00DD0114 /* Rounded+ViewModifier.swift */; };
 		ECE026FA2AA20BB700D3D26B /* PersonRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE026F92AA20BB700D3D26B /* PersonRow.swift */; };
 		ECE026FC2AA212EB00D3D26B /* PersonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE026FB2AA212EB00D3D26B /* PersonDetailView.swift */; };
 		ECE027022AA519F300D3D26B /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE027012AA519F300D3D26B /* FileManager+Extensions.swift */; };
@@ -32,6 +33,7 @@
 		EC53AD772A9E976600CA2565 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		EC53AD792A9EA20800CA2565 /* Contact+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Contact+Extensions.swift"; sourceTree = "<group>"; };
 		EC53AD7D2A9FF88200CA2565 /* AddPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPerson.swift; sourceTree = "<group>"; };
+		ECC2FBF22AA7CCAD00DD0114 /* Rounded+ViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rounded+ViewModifier.swift"; sourceTree = "<group>"; };
 		ECE026F92AA20BB700D3D26B /* PersonRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonRow.swift; sourceTree = "<group>"; };
 		ECE026FB2AA212EB00D3D26B /* PersonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailView.swift; sourceTree = "<group>"; };
 		ECE027012AA519F300D3D26B /* FileManager+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				EC53AD772A9E976600CA2565 /* PersistenceController.swift */,
 				ECE027012AA519F300D3D26B /* FileManager+Extensions.swift */,
 				EC53AD792A9EA20800CA2565 /* Contact+Extensions.swift */,
+				ECC2FBF22AA7CCAD00DD0114 /* Rounded+ViewModifier.swift */,
 				EC53AD682A9E8DE400CA2565 /* Assets.xcassets */,
 				EC53AD742A9E96D500CA2565 /* MemPix.xcdatamodeld */,
 				EC53AD6A2A9E8DE400CA2565 /* Preview Content */,
@@ -170,6 +173,7 @@
 				EC53AD7A2A9EA20800CA2565 /* Contact+Extensions.swift in Sources */,
 				EC53AD672A9E8DE300CA2565 /* ContentView.swift in Sources */,
 				EC53AD652A9E8DE300CA2565 /* MemPixApp.swift in Sources */,
+				ECC2FBF32AA7CCAD00DD0114 /* Rounded+ViewModifier.swift in Sources */,
 				EC53AD762A9E96D500CA2565 /* MemPix.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

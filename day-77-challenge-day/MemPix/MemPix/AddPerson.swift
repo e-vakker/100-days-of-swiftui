@@ -58,7 +58,7 @@ struct AddPerson: View {
         let uniqueFileName = id.uuidString + ".jpg"
         
         if let image = inputImage {
-            if let data = image.jpegData(compressionQuality: 1) {
+            if let data = image.jpegData(compressionQuality: 0.8) {
                 let filename = FileManager.documentsDirectory.appendingPathComponent(uniqueFileName)
                 try? data.write(to: filename)
             }
@@ -70,23 +70,21 @@ struct AddPerson: View {
     var photo: some View {
         VStack {
             ZStack {
-                Rectangle()
-                    .fill(.clear)
-                if let image = inputImage {
-                    Image(uiImage: image)
-                        .resizable()
-                } else {
-                    ZStack {
-                        Color.gray.opacity(0.40)
+                Color.clear
+                    .aspectRatio(1, contentMode: .fit)
+                    .overlay {
+                        if let image = inputImage {
+                            Image(uiImage: image)
+                                .resizable()
+                                .scaledToFill()
+                        } else {
+                            Color.gray.opacity(0.40)
+                        }
                     }
-                }
+                    .clipped()
             }
             .aspectRatio(1, contentMode: .fit)
-            .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-            .overlay {
-                RoundedRectangle(cornerRadius: 20, style: .continuous)
-                    .strokeBorder(.quaternary, lineWidth: 0.5)
-            }
+            .RoundedViewStyle()
             .padding([.horizontal])
             Button("Set new photo") {
                 showingAddImageSheet = true

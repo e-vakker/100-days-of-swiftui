@@ -18,11 +18,7 @@ struct PersonRow: View {
                     .scaledToFill()
                     .frame(width: 75, height: 75)
                     .clipped()
-                    .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 20, style: .continuous)
-                            .strokeBorder(.quaternary, lineWidth: 0.5)
-                    }
+                    .RoundedViewStyle()
             } else {
                 Color.gray
             }
