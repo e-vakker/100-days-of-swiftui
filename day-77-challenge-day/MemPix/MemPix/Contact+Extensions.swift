@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import SwiftUI
 
 
 extension Contact {
@@ -48,25 +49,28 @@ extension Contact {
         context.delete(contact)
     }
     
-//    static func fetch(_ predicate: NSPredicate) -> NSFetchRequest<Contact> {
-//        let request = Contact.fetchRequest()
-//        request.sortDescriptors = [NSSortDescriptor(keyPath: \Contact.lastName_, ascending: true)]
-//        request.predicate = predicate
-//
-//        return request
-//    }
-    
     //MARK: - Preview helper
     
-    static var example: Contact {
+    static let example: Contact = {
         let context = PersistenceController.preview.container.viewContext
         let contact = Contact(firstName: "Pug", lastName: "Pugoff", context: context)
         return contact
-    }
+    }()
 }
 
 extension Contact: Comparable {
     public static func < (lhs: Contact, rhs: Contact) -> Bool {
         lhs.lastName < rhs.lastName
+    }
+}
+
+extension Contact {
+    var image: Image? {
+        let fileName = "\(uuid).jpg"
+        let path = FileManager.documentsDirectory.appendingPathComponent(fileName).path()
+        if let image = UIImage(contentsOfFile: path) {
+            return Image(uiImage: image)
+        }
+        return nil
     }
 }

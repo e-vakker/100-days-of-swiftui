@@ -43,11 +43,12 @@ class PersistenceController {
     //MARK: - SwiftUI Preview helper
     
     static var preview: PersistenceController {
-        let controller = PersistenceController(inMemory: true)
+        let controller = PersistenceController(inMemory: false) // Use the same persistent store as the app
         
         // Create 10 examples
+        let context = controller.container.viewContext
         for i in 0..<10 {
-            let person = Contact(firstName: "First name \(i)", lastName: "Last name \(i)", context: controller.container.viewContext)
+            _ = Contact(firstName: "First name \(i)", lastName: "Last name \(i)", context: context)
         }
         
         return controller

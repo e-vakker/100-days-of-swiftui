@@ -19,11 +19,10 @@ struct PersonDetailView: View {
                 Color.clear
                     .aspectRatio(1, contentMode: .fit)
                     .overlay {
-                        let imageURL = FileManager.documentsDirectory.appendingPathComponent("\(person.uuid).jpg")
-                        if let image = UIImage(contentsOfFile: imageURL.path()) {
-                            Image(uiImage: image)
+                        if let image = person.image {
+                            image
                                 .resizable()
-                                .scaledToFit()
+                                .scaledToFill()
                         } else {
                             Color.gray
                         }
@@ -50,5 +49,7 @@ struct PersonDetailView: View {
 struct PersonDetailView_Previews: PreviewProvider {
     static var previews: some View {
         PersonDetailView(person: Contact.example)
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+
     }
 }

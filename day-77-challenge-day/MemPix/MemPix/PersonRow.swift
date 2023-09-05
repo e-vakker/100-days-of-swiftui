@@ -12,9 +12,8 @@ struct PersonRow: View {
     
     var body: some View {
         HStack(spacing: 20) {
-            let imageURL = FileManager.documentsDirectory.appendingPathComponent("\(person.uuid).jpg")
-            if let image = UIImage(contentsOfFile: imageURL.path()) {
-                Image(uiImage: image)
+            if let image = person.image {
+                image
                     .resizable()
                     .scaledToFill()
                     .frame(width: 75, height: 75)
@@ -37,6 +36,6 @@ struct PersonRow: View {
 struct PersonRow_Previews: PreviewProvider {
     static var previews: some View {
         PersonRow(person: Contact.example)
-            .padding()
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

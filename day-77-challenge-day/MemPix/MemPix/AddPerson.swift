@@ -58,7 +58,7 @@ struct AddPerson: View {
         let uniqueFileName = id.uuidString + ".jpg"
         
         if let image = inputImage {
-            if let data = image.jpegData(compressionQuality: 0.8) {
+            if let data = image.jpegData(compressionQuality: 1) {
                 let filename = FileManager.documentsDirectory.appendingPathComponent(uniqueFileName)
                 try? data.write(to: filename)
             }
