@@ -56,7 +56,17 @@ struct ContentView: View {
     func removePersons(at offsets: IndexSet) {
         for index in offsets {
             let person = persons[index]
+            let id = person.uuid
+            // Generate a unique filename using UUID
+            let uniqueFileName = id.uuidString + ".jpg"
+            let filePath = FileManager.documentsDirectory.appendingPathComponent(uniqueFileName)
             context.delete(person)
+            do {
+                try FileManager.default.removeItem(at: filePath)
+                print("The file has been deleted")
+            } catch {
+                print("The file has not been deleted")
+            }
         }
     }
 }

@@ -49,11 +49,8 @@ struct AddPerson: View {
                             HStack {
                                 Spacer()
                                 Button {
-                                    if places.isEmpty {
-                                        places.append(Place(lat: mapRegion.center.latitude, long: mapRegion.center.longitude))
-                                    } else {
-                                        places[0] = Place(lat: mapRegion.center.latitude, long: mapRegion.center.longitude)
-                                    }
+                                    let place = Place(lat: mapRegion.center.latitude, long: mapRegion.center.longitude)
+                                    places.isEmpty ? places.append(place) : (places[0] = place)
                                 } label: {
                                     Image(systemName: "plus")
                                         .padding()
@@ -68,11 +65,12 @@ struct AddPerson: View {
                     }
                     .aspectRatio(1.0, contentMode: .fit)
                     .RoundedViewStyle()
+                    .padding()
                 } header: {
                     Text("Pick a place where your friend lives")
                 }
-               
             }
+            .listStyle(.inset)
             .navigationTitle("New person")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
