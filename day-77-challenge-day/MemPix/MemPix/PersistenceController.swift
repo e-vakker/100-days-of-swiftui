@@ -48,7 +48,7 @@ class PersistenceController {
         // Create 10 examples
         let context = controller.container.viewContext
         for i in 0..<10 {
-            _ = Contact(firstName: "First name \(i)", lastName: "Last name \(i)", context: context)
+            _ = Contact(firstName: "First name \(i)", lastName: "Last name \(i)", longitude: 0, latitude: 0, context: context)
         }
         
         return controller

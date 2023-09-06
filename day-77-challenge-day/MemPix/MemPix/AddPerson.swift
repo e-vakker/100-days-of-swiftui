@@ -6,29 +6,72 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct AddPerson: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.managedObjectContext) var context
     
-    @State var showingAddImageSheet = false
+    @State private var showingAddImageSheet = false
     
-    @State var firstName = ""
-    @State var lastName = ""
+    @State private var firstName = ""
+    @State private var lastName = ""
     
-    @State var inputImage: UIImage?
+    @State private var inputImage: UIImage?
+    
+    @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 50, longitude: 0), span: MKCoordinateSpan(latitudeDelta: 25, longitudeDelta: 25))
+    
+    @State private var places:[Place] = []
     
     var body: some View {
         NavigationStack {
-            photo
-            
             List {
+                photo
                 Section {
                     TextField("First Name", text: $firstName)
                     TextField("Last Name", text: $lastName)
                 } header: {
                     Text("Write your friend's first and last name")
                 }
+                Section {
+                    ZStack {
+                        Map(coordinateRegion: $mapRegion, annotationItems: places) {
+                            place in
+                            MapMarker(coordinate: place.location, tint: .purple)
+                        }
+                        Circle()
+                            .fill(.blue)
+                            .opacity(0.3)
+                            .frame(width: 32, height: 32)
+                        
+                        VStack {
+                            Spacer()
+                            HStack {
+                                Spacer()
+                                Button {
+                                    if places.isEmpty {
+                                        places.append(Place(lat: mapRegion.center.latitude, long: mapRegion.center.longitude))
+                                    } else {
+                                        places[0] = Place(lat: mapRegion.center.latitude, long: mapRegion.center.longitude)
+                                    }
+                                } label: {
+                                    Image(systemName: "plus")
+                                        .padding()
+                                        .background(.blue.opacity(0.75))
+                                        .foregroundColor(.white)
+                                        .font(.title)
+                                        .clipShape(Circle())
+                                        .padding()
+                                }
+                            }
+                        }
+                    }
+                    .aspectRatio(1.0, contentMode: .fit)
+                    .RoundedViewStyle()
+                } header: {
+                    Text("Pick a place where your friend lives")
+                }
+               
             }
             .navigationTitle("New person")
             .navigationBarTitleDisplayMode(.inline)
@@ -52,7 +95,9 @@ struct AddPerson: View {
     }
     
     func savePerson() {
-        let person = Contact(firstName: firstName, lastName: lastName, context: context)
+        let longitude = places[0].location.longitude
+        let latitude = places[0].location.latitude
+        let person = Contact(firstName: firstName, lastName: lastName, longitude: longitude, latitude: latitude, context: context)
         let id = person.uuid
         // Generate a unique filename using UUID
         let uniqueFileName = id.uuidString + ".jpg"

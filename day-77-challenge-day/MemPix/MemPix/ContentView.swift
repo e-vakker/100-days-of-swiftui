@@ -48,6 +48,7 @@ struct ContentView: View {
             .toolbar {
                 EditButton()
             }
+            
         }
 
     }

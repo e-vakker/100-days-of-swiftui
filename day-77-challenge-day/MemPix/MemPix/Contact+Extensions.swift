@@ -8,6 +8,7 @@
 import Foundation
 import CoreData
 import SwiftUI
+import CoreLocation
 
 
 extension Contact {
@@ -33,10 +34,14 @@ extension Contact {
     
     convenience init(firstName: String,
                      lastName: String,
+                     longitude: Double,
+                     latitude: Double,
                      context: NSManagedObjectContext) {
         self.init(context: context)
         self.firstName = firstName
         self.lastName = lastName
+        self.longitude = longitude
+        self.latitude = latitude
     }
     
     public override func awakeFromInsert() {
@@ -53,7 +58,7 @@ extension Contact {
     
     static let example: Contact = {
         let context = PersistenceController.preview.container.viewContext
-        let contact = Contact(firstName: "Pug", lastName: "Pugoff", context: context)
+        let contact = Contact(firstName: "Pug", lastName: "Pugoff", longitude: 0, latitude: 0, context: context)
         return contact
     }()
 }
@@ -72,5 +77,9 @@ extension Contact {
             return Image(uiImage: image)
         }
         return nil
+    }
+    
+    var coordinate: CLLocationCoordinate2D {
+        CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
     }
 }
