@@ -13,6 +13,9 @@
 		ECC2FC0C2AAA674D00DD0114 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECC2FC0B2AAA674D00DD0114 /* Preview Assets.xcassets */; };
 		ECC2FC132AAA6D4600DD0114 /* ContentView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC2FC122AAA6D4600DD0114 /* ContentView2.swift */; };
 		ECC2FC152AAA730A00DD0114 /* ContentView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC2FC142AAA730A00DD0114 /* ContentView3.swift */; };
+		ECC2FC172AAA7E4900DD0114 /* ContentView4.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC2FC162AAA7E4900DD0114 /* ContentView4.swift */; };
+		ECC2FC192AAA817C00DD0114 /* ContentView5.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC2FC182AAA817C00DD0114 /* ContentView5.swift */; };
+		ECC2FC1C2AAA86C500DD0114 /* SamplePackage in Frameworks */ = {isa = PBXBuildFile; productRef = ECC2FC1B2AAA86C500DD0114 /* SamplePackage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +26,8 @@
 		ECC2FC0B2AAA674D00DD0114 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		ECC2FC122AAA6D4600DD0114 /* ContentView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView2.swift; sourceTree = "<group>"; };
 		ECC2FC142AAA730A00DD0114 /* ContentView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView3.swift; sourceTree = "<group>"; };
+		ECC2FC162AAA7E4900DD0114 /* ContentView4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView4.swift; sourceTree = "<group>"; };
+		ECC2FC182AAA817C00DD0114 /* ContentView5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView5.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECC2FC1C2AAA86C500DD0114 /* SamplePackage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +65,8 @@
 				ECC2FC062AAA674A00DD0114 /* ContentView.swift */,
 				ECC2FC122AAA6D4600DD0114 /* ContentView2.swift */,
 				ECC2FC142AAA730A00DD0114 /* ContentView3.swift */,
+				ECC2FC162AAA7E4900DD0114 /* ContentView4.swift */,
+				ECC2FC182AAA817C00DD0114 /* ContentView5.swift */,
 				ECC2FC082AAA674D00DD0114 /* Assets.xcassets */,
 				ECC2FC0A2AAA674D00DD0114 /* Preview Content */,
 			);
@@ -89,6 +97,9 @@
 			dependencies = (
 			);
 			name = HotProspects;
+			packageProductDependencies = (
+				ECC2FC1B2AAA86C500DD0114 /* SamplePackage */,
+			);
 			productName = HotProspects;
 			productReference = ECC2FC012AAA674A00DD0114 /* HotProspects.app */;
 			productType = "com.apple.product-type.application";
@@ -117,6 +128,9 @@
 				Base,
 			);
 			mainGroup = ECC2FBF82AAA674A00DD0114;
+			packageReferences = (
+				ECC2FC1A2AAA86C500DD0114 /* XCRemoteSwiftPackageReference "SamplePackage" */,
+			);
 			productRefGroup = ECC2FC022AAA674A00DD0114 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -143,9 +157,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECC2FC192AAA817C00DD0114 /* ContentView5.swift in Sources */,
 				ECC2FC132AAA6D4600DD0114 /* ContentView2.swift in Sources */,
 				ECC2FC072AAA674A00DD0114 /* ContentView.swift in Sources */,
 				ECC2FC152AAA730A00DD0114 /* ContentView3.swift in Sources */,
+				ECC2FC172AAA7E4900DD0114 /* ContentView4.swift in Sources */,
 				ECC2FC052AAA674A00DD0114 /* HotProspectsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,6 +363,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		ECC2FC1A2AAA86C500DD0114 /* XCRemoteSwiftPackageReference "SamplePackage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/SamplePackage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		ECC2FC1B2AAA86C500DD0114 /* SamplePackage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ECC2FC1A2AAA86C500DD0114 /* XCRemoteSwiftPackageReference "SamplePackage" */;
+			productName = SamplePackage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = ECC2FBF92AAA674A00DD0114 /* Project object */;
 }
