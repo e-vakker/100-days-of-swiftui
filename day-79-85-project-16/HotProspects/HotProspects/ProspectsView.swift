@@ -14,22 +14,41 @@ struct ProspectsView: View {
     @EnvironmentObject var prospects: Prospects
     
     @State private var isShowingScanner = false
+    @State private var isShowingSort = false
     
     enum FilterType {
         case none, contacted, uncontacted
     }
     
+    enum SortedType {
+        case byMostRecent, byName
+    }
+    
     let filter: FilterType
+    
+    @State private var sort: SortedType = .byMostRecent
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(filteredProspects) { prospect in
-                    VStack(alignment: .leading) {
-                        Text(prospect.name)
-                            .font(.headline)
-                        Text(prospect.emailAddress)
-                            .foregroundColor(.secondary)
+                ForEach(sortedProspects) { prospect in
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text(prospect.name)
+                                .font(.headline)
+                            Text(prospect.emailAddress)
+                                .foregroundColor(.secondary)
+                        }
+                        Spacer()
+                        if filter == .none {
+                            if prospect.isContacted {
+                                Image(systemName: "person.crop.circle.badge.checkmark")
+                                    .foregroundColor(.green)
+                            } else {
+                                Image(systemName: "person.crop.circle.badge.xmark")
+                                    .foregroundColor(.red)
+                            }
+                        }
                     }
                     .swipeActions {
                         if prospect.isContacted {
@@ -60,14 +79,36 @@ struct ProspectsView: View {
             }
             .navigationTitle(title)
             .toolbar {
-                Button {
-                    isShowingScanner = true
-                } label: {
-                    Label("Scan", systemImage: "qrcode.viewfinder")
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        isShowingScanner = true
+                    } label: {
+                        Label("Scan", systemImage: "qrcode.viewfinder")
+                    }
+                    
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        isShowingSort = true
+                    } label: {
+                        Label("Sort", systemImage: "arrow.up.arrow.down.circle")
+                    }
                 }
             }
             .sheet(isPresented: $isShowingScanner) {
                 CodeScannerView(codeTypes: [.qr], simulatedData: "Paul Hudson\npaul@hackingwithswift.com", completion: handleScan)
+            }
+            .confirmationDialog("Sort", isPresented: $isShowingSort) {
+                Button("by Most Recent") {
+                    sort = .byMostRecent
+                }
+                
+                Button("by Name") {
+                    sort = .byName
+                }
+            } message: {
+                Text("Choose how you want to sort the list")
             }
         }
     }
@@ -131,6 +172,15 @@ struct ProspectsView: View {
             return "Contacted people"
         case .uncontacted:
             return "Uncontacted people"
+        }
+    }
+    
+    var sortedProspects: [Prospect] {
+        switch sort {
+        case .byMostRecent:
+            return filteredProspects
+        case .byName:
+            return filteredProspects.sorted()
         }
     }
     
