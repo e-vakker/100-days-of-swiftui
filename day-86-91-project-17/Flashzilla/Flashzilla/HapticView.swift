@@ -63,8 +63,6 @@ struct HapticView: View {
     }
 }
 
-struct HapticView_Previews: PreviewProvider {
-    static var previews: some View {
-        HapticView()
-    }
+#Preview {
+    HapticView()
 }

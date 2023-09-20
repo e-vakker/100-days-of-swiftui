@@ -98,11 +98,18 @@ struct ContentShapeTest: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentShapeTest()
-        ContentView()
-        ContentView2()
-        ContentView3()
-    }
+#Preview("First") {
+    ContentShapeTest()
+}
+
+#Preview("Second") {
+    ContentView()
+}
+
+#Preview("Third") {
+    ContentView2()
+}
+
+#Preview("Forth") {
+    ContentView3()
 }
