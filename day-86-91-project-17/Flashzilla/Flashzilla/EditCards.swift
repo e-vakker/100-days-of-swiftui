@@ -49,6 +49,15 @@ struct EditCards: View {
     }
     
     func loadData() {
+        do {
+            let data = try Data(contentsOf: FileManager.documentDirectory)
+            if let decoded = try? JSONDecoder().decode([Card].self, from: data) {
+                cards = decoded
+            }
+        } catch {
+            cards = []
+        }
+        
         if let data = UserDefaults.standard.data(forKey: "Cards") {
             if let decoded = try? JSONDecoder().decode([Card].self, from: data) {
                 cards = decoded
@@ -57,8 +66,11 @@ struct EditCards: View {
     }
     
     func saveData() {
-        if let data = try? JSONEncoder().encode(cards) {
-            UserDefaults.standard.set(data, forKey: "Cards")
+        do {
+            let data = try JSONEncoder().encode(cards)
+            try data.write(to: FileManager.documentDirectory)
+        } catch {
+            print("The data was not saved: \(error.localizedDescription)")
         }
     }
     
