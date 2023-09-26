@@ -57,12 +57,6 @@ struct EditCards: View {
         } catch {
             cards = []
         }
-        
-        if let data = UserDefaults.standard.data(forKey: "Cards") {
-            if let decoded = try? JSONDecoder().decode([Card].self, from: data) {
-                cards = decoded
-            }
-        }
     }
     
     func saveData() {
