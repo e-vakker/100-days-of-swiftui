@@ -177,18 +177,7 @@ struct ContentView: View {
     func resetCards() {
         timeRemaining = 100
         TimerIsActive = true
-        loadData()
-    }
-    
-    func loadData() {
-        do {
-            let data = try Data(contentsOf: FileManager.documentDirectory)
-            if let decoded = try? JSONDecoder().decode([Card].self, from: data) {
-                cards = decoded
-            }
-        } catch {
-            cards = []
-        }
+        cards = Card.loadData()
     }
 }
 

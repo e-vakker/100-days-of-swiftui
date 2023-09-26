@@ -40,32 +40,14 @@ struct EditCards: View {
                 Button("Done", action: done)
             }
             .listStyle(.grouped)
-            .onAppear(perform: loadData)
+            .onAppear {
+                cards = Card.loadData()
+            }
         }
     }
     
     func done() {
         dismiss()
-    }
-    
-    func loadData() {
-        do {
-            let data = try Data(contentsOf: FileManager.documentDirectory)
-            if let decoded = try? JSONDecoder().decode([Card].self, from: data) {
-                cards = decoded
-            }
-        } catch {
-            cards = []
-        }
-    }
-    
-    func saveData() {
-        do {
-            let data = try JSONEncoder().encode(cards)
-            try data.write(to: FileManager.documentDirectory)
-        } catch {
-            print("The data was not saved: \(error.localizedDescription)")
-        }
     }
     
     func addCard() {
@@ -77,12 +59,12 @@ struct EditCards: View {
         cards.insert(card, at: 0)
         newPrompt = ""
         newAnswer = ""
-        saveData()
+        Card.saveData(cards: cards)
     }
     
     func removeCards(at offsets: IndexSet) {
         cards.remove(atOffsets: offsets)
-        saveData()
+        Card.saveData(cards: cards)
     }
 }
 
