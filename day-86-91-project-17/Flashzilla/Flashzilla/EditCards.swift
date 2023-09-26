@@ -69,6 +69,8 @@ struct EditCards: View {
         
         let card = Card(prompt: trimmedPrompt, answer: trimmedAnswer)
         cards.insert(card, at: 0)
+        newPrompt = ""
+        newAnswer = ""
         saveData()
     }
     

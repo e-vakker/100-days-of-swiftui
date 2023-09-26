@@ -87,6 +87,7 @@ struct CardView: View {
     }
 }
 
-#Preview {
+@available(iOS 17, *)
+#Preview(traits: .landscapeRight) {
     CardView(card: Card.example)
 }

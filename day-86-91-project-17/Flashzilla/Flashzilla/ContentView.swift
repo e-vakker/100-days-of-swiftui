@@ -174,6 +174,7 @@ struct ContentView: View {
     }
 }
 
-#Preview {
+@available(iOS 17, *)
+#Preview(traits: .landscapeRight) {
     ContentView()
 }
