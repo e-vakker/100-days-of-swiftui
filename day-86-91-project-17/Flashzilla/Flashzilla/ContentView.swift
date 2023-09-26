@@ -60,7 +60,7 @@ struct ContentView: View {
                     HStack {
                         Button {
                             withAnimation {
-                                removeCard(at: cards.count - 1)
+//                                removeCard(at: cards.count - 1)
                             }
                         } label: {
                             Image(systemName: "xmark.circle")
@@ -75,7 +75,9 @@ struct ContentView: View {
                         
                         Button {
                             withAnimation {
-                                removeCard(at: cards.count - 1)
+                                if let last = cards.last {
+                                    removeCard(last)
+                                }
                             }
                         } label: {
                             Image(systemName: "checkmark.circle")
@@ -102,15 +104,22 @@ struct ContentView: View {
                     .clipShape(Capsule())
                 
                 ZStack {
-                    ForEach(0..<cards.count, id: \.self) { index in
-                        CardView(card: cards[index]) {
-                            withAnimation {
-                                removeCard(at: index)
+                    ForEach(cards) { card in
+                        CardView(card: card) { isCorrect in
+                            if isCorrect {
+                                withAnimation {
+                                    removeCard(card)
+                                }
+                            } else {
+                                withAnimation {
+                                    restockCard(card)
+                                }
                             }
+                            
                         }
-                        .stacked(at: index, in: cards.count)
-                        .allowsHitTesting(index == cards.count - 1)
-                        .accessibilityHidden(index < cards.count - 1)
+//                        .stacked(at: index, in: cards.count)
+//                        .allowsHitTesting(index == cards.count - 1)
+//                        .accessibilityHidden(index < cards.count - 1)
                     }
                 }
                 .allowsHitTesting(timeRemaining > 0)
@@ -149,13 +158,17 @@ struct ContentView: View {
         })
     }
     
-    func removeCard(at index: Int) {
-        guard index >= 0 else { return }
-        
-        cards.remove(at: index)
-        
+    func removeCard(_ card: Card) {
+        cards.removeAll(where: { $0.id == card.id })
         if cards.isEmpty {
             TimerIsActive = false
+        }
+    }
+    
+    func restockCard(_ card: Card) {
+        if let index = cards.firstIndex(where: { $0.id == card.id }) {
+            let cardToRestock = cards.remove(at: index)
+            cards.insert(cardToRestock, at: cards.startIndex)
         }
     }
     
