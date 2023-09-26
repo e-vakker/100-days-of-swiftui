@@ -7,6 +7,38 @@
 
 import SwiftUI
 
+struct CardBackground: ViewModifier {
+    var offset: CGSize
+    
+    @Environment(\.accessibilityDifferentiateWithoutColor) var differentiateWithoutColor
+    
+    var fillColor: Color {
+        if offset.width > 1 {
+            return Color.green
+        } else if offset.width < -1 {
+            return Color.red
+        } else {
+            return Color.white
+        }
+    }
+    
+    func body(content: Content) -> some View {
+        content
+            .background {
+                differentiateWithoutColor
+                ? nil
+                : RoundedRectangle(cornerRadius: 25.0, style: .continuous)
+                    .fill(fillColor)
+            }
+    }
+}
+
+extension View {
+    func customCardBackground(offset: CGSize) -> some View {
+        self.modifier(CardBackground(offset: offset))
+    }
+}
+
 struct CardView: View {
     let card: Card
     
@@ -27,12 +59,7 @@ struct CardView: View {
                 .fill(
                     differentiateWithoutColor ? .white : .white.opacity(1 - Double(abs(offset.width / 50)))
                 )
-                .background {
-                    differentiateWithoutColor 
-                    ? nil
-                    : RoundedRectangle(cornerRadius: 25.0, style: .continuous)
-                        .fill(offset.width > 0 ? .green : .red)
-                }
+                .customCardBackground(offset: offset)
                 .shadow(radius: 10)
             
             VStack {
