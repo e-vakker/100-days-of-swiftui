@@ -12,6 +12,8 @@
 		EC11AA772AC3518B00E73DB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC11AA762AC3518B00E73DB5 /* Assets.xcassets */; };
 		EC11AA7A2AC3518B00E73DB5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC11AA792AC3518B00E73DB5 /* Preview Assets.xcassets */; };
 		EC11AA832AC355F800E73DB5 /* CustomAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC11AA822AC355F800E73DB5 /* CustomAlignment.swift */; };
+		EC11AA852AC3663E00E73DB5 /* GeometryReaderDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC11AA842AC3663E00E73DB5 /* GeometryReaderDemo.swift */; };
+		EC11AA872AC3696500E73DB5 /* ScrollViewAndGeometryReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC11AA862AC3696500E73DB5 /* ScrollViewAndGeometryReader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,8 @@
 		EC11AA762AC3518B00E73DB5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EC11AA792AC3518B00E73DB5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EC11AA822AC355F800E73DB5 /* CustomAlignment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlignment.swift; sourceTree = "<group>"; };
+		EC11AA842AC3663E00E73DB5 /* GeometryReaderDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryReaderDemo.swift; sourceTree = "<group>"; };
+		EC11AA862AC3696500E73DB5 /* ScrollViewAndGeometryReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewAndGeometryReader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +57,9 @@
 		EC11AA712AC3518900E73DB5 /* LayoutAndGeometry */ = {
 			isa = PBXGroup;
 			children = (
+				EC11AA862AC3696500E73DB5 /* ScrollViewAndGeometryReader.swift */,
 				EC11AA722AC3518900E73DB5 /* LayoutAndGeometryApp.swift */,
+				EC11AA842AC3663E00E73DB5 /* GeometryReaderDemo.swift */,
 				EC11AA742AC3518900E73DB5 /* ContentView.swift */,
 				EC11AA822AC355F800E73DB5 /* CustomAlignment.swift */,
 				EC11AA762AC3518B00E73DB5 /* Assets.xcassets */,
@@ -142,7 +148,9 @@
 			files = (
 				EC11AA832AC355F800E73DB5 /* CustomAlignment.swift in Sources */,
 				EC11AA752AC3518900E73DB5 /* ContentView.swift in Sources */,
+				EC11AA872AC3696500E73DB5 /* ScrollViewAndGeometryReader.swift in Sources */,
 				EC11AA732AC3518900E73DB5 /* LayoutAndGeometryApp.swift in Sources */,
+				EC11AA852AC3663E00E73DB5 /* GeometryReaderDemo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
