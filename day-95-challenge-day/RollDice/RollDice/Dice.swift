@@ -8,7 +8,9 @@
 import Foundation
 
 
-struct Dice {
+struct Dice: Hashable, Identifiable {
+    var id = UUID()
+    
     enum DiceSides: Int, CaseIterable {
         case four = 4
         case six = 6
@@ -21,9 +23,14 @@ struct Dice {
     
     var value: Int
     
+    init(sides: DiceSides) {
+        self.value = Dice.roll(sides: sides.rawValue)
+        self.sides = sides
+    }
+    
     let sides: DiceSides
     
-    mutating func roll() {
-        value = Int.random(in: 1...sides.rawValue)
+    private static func roll(sides: Int) -> Int {
+        return Int.random(in: 1...sides)
     }
 }

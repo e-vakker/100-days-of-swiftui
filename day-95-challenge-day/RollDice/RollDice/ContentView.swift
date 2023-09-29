@@ -8,21 +8,30 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var stepperValue = 4
-    
-    let diceSlides = Dice.DiceSides.allCases.map { $0.rawValue }
+    @StateObject private var viewModel = ViewModel()
     
     var body: some View {
-        ZStack {
+        VStack {
             VStack {
                 Text("Roll Dice")
                     .font(.largeTitle)
                     .foregroundStyle(.black)
                     .fontDesign(.monospaced)
+                
+                Text("Total: \(viewModel.total)")
+                    .font(.title)
+                    .foregroundStyle(.black)
+                    .fontWeight(.heavy)
+                    .fontDesign(.monospaced)
+                    .padding(25)
+                    .background(.thickMaterial)
+                    .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
+                
                 HStack {
-                    CustomStepper(value: $stepperValue, range: diceSlides)
+                    CustomStepper(value: $viewModel.diceSides, range: viewModel.diceSlides)
                     Spacer()
                     Button(action: {
+                        viewModel.addDice()
                         Haptic.feedback()
                     }) {
                         Text("Add")
@@ -35,23 +44,24 @@ struct ContentView: View {
                             }
                     }
                     .buttonStyle(BlackGrayButtonStyle())
+                    .disabled(viewModel.isDisabledAddDice ? true : false)
                 }
                 
                 Spacer()
             }
-            VStack {
-                Text("55")
-                    .font(.system(size: 100, design: .monospaced))
-                    .foregroundStyle(.black)
-                
-                Text("Total: 55")
-                    .font(.title)
-                    .foregroundStyle(.black)
-                    .fontWeight(.heavy)
-                    .fontDesign(.monospaced)
-                    .padding(25)
-                    .background(.thickMaterial)
-                    .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
+            
+            let numberOfColumns = max(min(viewModel.dices.count, 2), 1)
+            
+            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: numberOfColumns), alignment: .center) {
+                ForEach(viewModel.dices) { dice in
+                    Text("\(dice.value)")
+                        .font(.system(size: 90))
+                        .fontDesign(.monospaced)
+                        .foregroundStyle(.black)
+                        .onTapGesture {
+                            viewModel.deleteDice(id: dice.id)
+                        }
+                }
             }
             
             VStack {

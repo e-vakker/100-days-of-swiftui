@@ -14,6 +14,7 @@
 		ECB1BD752AC6202D006B56DA /* Dice.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB1BD742AC6202D006B56DA /* Dice.swift */; };
 		ECB1BD772AC62F28006B56DA /* CustomStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB1BD762AC62F28006B56DA /* CustomStepper.swift */; };
 		ECB1BD792AC70F71006B56DA /* Haptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB1BD782AC70F71006B56DA /* Haptic.swift */; };
+		ECB1BD7B2AC710B0006B56DA /* ContentView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB1BD7A2AC710B0006B56DA /* ContentView-ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		ECB1BD742AC6202D006B56DA /* Dice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dice.swift; sourceTree = "<group>"; };
 		ECB1BD762AC62F28006B56DA /* CustomStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStepper.swift; sourceTree = "<group>"; };
 		ECB1BD782AC70F71006B56DA /* Haptic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptic.swift; sourceTree = "<group>"; };
+		ECB1BD7A2AC710B0006B56DA /* ContentView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView-ViewModel.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 			children = (
 				ECB1BD662AC6135C006B56DA /* RollDiceApp.swift */,
 				ECB1BD682AC6135C006B56DA /* ContentView.swift */,
+				ECB1BD7A2AC710B0006B56DA /* ContentView-ViewModel.swift */,
 				ECB1BD782AC70F71006B56DA /* Haptic.swift */,
 				ECB1BD762AC62F28006B56DA /* CustomStepper.swift */,
 				ECB1BD742AC6202D006B56DA /* Dice.swift */,
@@ -147,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECB1BD772AC62F28006B56DA /* CustomStepper.swift in Sources */,
+				ECB1BD7B2AC710B0006B56DA /* ContentView-ViewModel.swift in Sources */,
 				ECB1BD792AC70F71006B56DA /* Haptic.swift in Sources */,
 				ECB1BD692AC6135C006B56DA /* ContentView.swift in Sources */,
 				ECB1BD752AC6202D006B56DA /* Dice.swift in Sources */,

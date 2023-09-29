@@ -21,7 +21,7 @@ extension ContentView {
         @Published var isUnlocked = false
         
         @Published var isShowingAlert = false
-        
+         
         @Published var alertMessage = ""
         
         let savePath = FileManager.documentDirectory.appendingPathComponent("SavedPlaces")
