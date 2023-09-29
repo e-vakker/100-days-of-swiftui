@@ -12,85 +12,93 @@ struct ContentView: View {
     
     @State private var visibleTotal: Int = 0
     
-    let timer = Timer.publish(every: 0.01, on: .main, in: .common).autoconnect()
-    
     var body: some View {
-        VStack {
+        ZStack {
             VStack {
-                Text("Roll Dice")
-                    .font(.largeTitle)
-                    .foregroundStyle(.black)
-                    .fontDesign(.monospaced)
-                
-                Text("Total: \(visibleTotal)")
-                    .font(.title)
-                    .foregroundStyle(.black)
-                    .fontWeight(.heavy)
-                    .fontDesign(.monospaced)
-                    .padding(25)
-                    .background(.thickMaterial)
-                    .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
-                
-                HStack {
-                    CustomStepper(value: $viewModel.diceSides, range: viewModel.diceSlides)
+                VStack {
+                    Text("Roll Dice")
+                        .font(.largeTitle)
+                        .foregroundStyle(.black)
+                        .fontDesign(.monospaced)
+                    
+                    Text("Total: \(visibleTotal)")
+                        .font(.title)
+                        .foregroundStyle(.black)
+                        .fontWeight(.heavy)
+                        .fontDesign(.monospaced)
+                        .padding(25)
+                        .background(.thickMaterial)
+                        .clipShape(RoundedRectangle(cornerRadius: 25.0, style: .continuous))
+                        .contextMenu(menuItems: {
+                            Button(action: { viewModel.removeHistory() }) {
+                                Label("Remove history", systemImage: "trash")
+                            }
+                        })
+                    
                     Spacer()
+                }
+                
+                let numberOfColumns = max(min(viewModel.dices.count, 2), 1)
+                
+                LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: numberOfColumns), alignment: .center) {
+                    ForEach(viewModel.dices) { dice in
+                        DiceView(value: dice.value)
+                            .onTapGesture {
+                                viewModel.deleteDice(id: dice.id)
+                                Haptic.feedback()
+                            }
+                            .transition(.asymmetric(insertion: .move(edge: .top), removal: .opacity))
+                    }
+                    .animation(.spring(), value: viewModel.dices)
+                }
+                
+                VStack {
+                    Spacer()
+                    HStack {
+                        CustomStepper(value: $viewModel.diceSides, range: viewModel.diceSlides)
+                        Spacer()
+                        Button(action: {
+                            viewModel.addDice()
+                            Haptic.feedback()
+                        }) {
+                            Text("Add")
+                                .padding(30)
+                                .background(.ultraThickMaterial)
+                                .clipShape(Circle())
+                                .overlay {
+                                    Circle()
+                                        .strokeBorder(.quaternary, lineWidth: 0.5)
+                                }
+                        }
+                        .buttonStyle(BlackGrayButtonStyle())
+                        .disabled(viewModel.isDisabledAddDice ? true : false)
+                    }
                     Button(action: {
-                        viewModel.addDice()
+                        viewModel.rollAllDices()
                         Haptic.feedback()
                     }) {
-                        Text("Add")
-                            .padding(30)
-                            .background(.ultraThickMaterial)
-                            .clipShape(Circle())
-                            .overlay {
-                                Circle()
-                                    .strokeBorder(.quaternary, lineWidth: 0.5)
-                            }
+                        Text("Roll")
+                            .font(.title)
+                            .foregroundStyle(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding(10)
+                            .background(viewModel.dices.isEmpty ? .gray : .black)
+                            .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                        
                     }
-                    .buttonStyle(BlackGrayButtonStyle())
-                    .disabled(viewModel.isDisabledAddDice ? true : false)
+                    .disabled(viewModel.dices.isEmpty ? true : false)
                 }
                 
-                Spacer()
             }
-            
-            let numberOfColumns = max(min(viewModel.dices.count, 2), 1)
-            
-            LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: numberOfColumns), alignment: .center) {
-                ForEach(viewModel.dices) { dice in
-                    DiceView(value: dice.value)
-                        .onTapGesture {
-                            viewModel.deleteDice(id: dice.id)
-                            Haptic.feedback()
-                        }
-                        .transition(.asymmetric(insertion: .move(edge: .top), removal: .opacity))
+            .padding()
+            .background {
+                HistoryView(rollDicesHistory: viewModel.rollDicesHistory)
+            }
+            .onChange(of: viewModel.total) {
+                Task {
+                    await animateValueChange()
                 }
-                .animation(.spring(), value: viewModel.dices)
-            }
-            
-            VStack {
-                Spacer()
-                Button(action: { 
-                    viewModel.rollAllDices()
-                    Haptic.feedback()
-                }) {
-                    Text("Roll")
-                        .font(.title)
-                        .foregroundStyle(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding(10)
-                        .background(viewModel.dices.isEmpty ? .gray : .black)
-                        .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
-                    
-                }
-                .disabled(viewModel.dices.isEmpty ? true : false)
-            }
         }
-        .padding()
-        .onChange(of: viewModel.total) {
-            Task {
-                await animateValueChange()
-            }
         }
     }
     

@@ -19,6 +19,8 @@ extension ContentView {
         
         @Published private(set) var isDisabledAddDice = false
         
+        @Published var rollDicesHistory: [Int] = []
+        
         func addDice() {
             guard dices.count < 6 else { return }
             
@@ -26,6 +28,8 @@ extension ContentView {
                 let dice = Dice(sides: diceSide)
                 dices.append(dice)
                 total += dice.value
+                addToHistory(value: dice.value)
+                
             } else {
                 print("Error: Invalid dice sides value \(diceSides)")
             }
@@ -51,8 +55,21 @@ extension ContentView {
             for index in dices.indices {
                 let newDiceValue = Dice.roll(sides: dices[index].sides.rawValue)
                 dices[index].value = newDiceValue
+                addToHistory(value: newDiceValue)
                 total = dices.reduce(0) { $0 + $1.value }
             }
+        }
+        
+        func addToHistory(value: Int) {
+            if rollDicesHistory.count < 500 {
+                rollDicesHistory.append(value)
+            } else {
+                removeHistory()
+            }
+        }
+        
+        func removeHistory() {
+            rollDicesHistory.removeAll()
         }
     }
 }

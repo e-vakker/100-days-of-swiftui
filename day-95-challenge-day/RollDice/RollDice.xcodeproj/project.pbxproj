@@ -16,6 +16,8 @@
 		ECB1BD792AC70F71006B56DA /* Haptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB1BD782AC70F71006B56DA /* Haptic.swift */; };
 		ECB1BD7B2AC710B0006B56DA /* ContentView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB1BD7A2AC710B0006B56DA /* ContentView-ViewModel.swift */; };
 		ECB1BD812AC7593B006B56DA /* DiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB1BD802AC7593B006B56DA /* DiceView.swift */; };
+		ECB1BD832AC764FE006B56DA /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB1BD822AC764FE006B56DA /* HistoryView.swift */; };
+		ECB1BD872AC779CB006B56DA /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB1BD862AC779CB006B56DA /* FileManager+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		ECB1BD782AC70F71006B56DA /* Haptic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptic.swift; sourceTree = "<group>"; };
 		ECB1BD7A2AC710B0006B56DA /* ContentView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView-ViewModel.swift"; sourceTree = "<group>"; };
 		ECB1BD802AC7593B006B56DA /* DiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceView.swift; sourceTree = "<group>"; };
+		ECB1BD822AC764FE006B56DA /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		ECB1BD862AC779CB006B56DA /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +66,9 @@
 			isa = PBXGroup;
 			children = (
 				ECB1BD662AC6135C006B56DA /* RollDiceApp.swift */,
+				ECB1BD862AC779CB006B56DA /* FileManager+Extension.swift */,
 				ECB1BD682AC6135C006B56DA /* ContentView.swift */,
+				ECB1BD822AC764FE006B56DA /* HistoryView.swift */,
 				ECB1BD802AC7593B006B56DA /* DiceView.swift */,
 				ECB1BD7A2AC710B0006B56DA /* ContentView-ViewModel.swift */,
 				ECB1BD782AC70F71006B56DA /* Haptic.swift */,
@@ -153,12 +159,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECB1BD772AC62F28006B56DA /* CustomStepper.swift in Sources */,
+				ECB1BD832AC764FE006B56DA /* HistoryView.swift in Sources */,
 				ECB1BD7B2AC710B0006B56DA /* ContentView-ViewModel.swift in Sources */,
 				ECB1BD792AC70F71006B56DA /* Haptic.swift in Sources */,
 				ECB1BD692AC6135C006B56DA /* ContentView.swift in Sources */,
 				ECB1BD752AC6202D006B56DA /* Dice.swift in Sources */,
 				ECB1BD812AC7593B006B56DA /* DiceView.swift in Sources */,
 				ECB1BD672AC6135C006B56DA /* RollDiceApp.swift in Sources */,
+				ECB1BD872AC779CB006B56DA /* FileManager+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
