@@ -46,5 +46,13 @@ extension ContentView {
                 isDisabledAddDice = false
             }
         }
+        
+        func rollAllDices() {
+            for index in dices.indices {
+                let newDiceValue = Dice.roll(sides: dices[index].sides.rawValue)
+                dices[index].value = newDiceValue
+                total = dices.reduce(0) { $0 + $1.value }
+            }
+        }
     }
 }

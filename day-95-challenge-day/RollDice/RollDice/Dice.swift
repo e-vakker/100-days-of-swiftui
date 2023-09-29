@@ -30,7 +30,7 @@ struct Dice: Hashable, Identifiable {
     
     let sides: DiceSides
     
-    private static func roll(sides: Int) -> Int {
+    static func roll(sides: Int) -> Int {
         return Int.random(in: 1...sides)
     }
 }

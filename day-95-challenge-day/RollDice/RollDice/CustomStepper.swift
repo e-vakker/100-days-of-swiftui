@@ -39,8 +39,7 @@ struct CustomStepper: View {
         }
         .buttonStyle(BlackGrayButtonStyle())
         .font(.title)
-        
-        
+        .animation(.bouncy, value: value)
     }
     
     func increment() {
