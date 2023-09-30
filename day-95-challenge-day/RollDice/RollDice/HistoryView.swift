@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HistoryView: View {
-    var rollDicesHistory: [Int]
+    var rollDicesHistory: [HistoryEntry]
     
     let columns = [
         GridItem(),
@@ -24,8 +24,8 @@ struct HistoryView: View {
     ]
     var body: some View {
         LazyVGrid(columns: columns, spacing: 10, content: {
-            ForEach(rollDicesHistory.indices, id: \.self) { index in
-                Text("\(rollDicesHistory[index])")
+            ForEach(rollDicesHistory) { dice in
+                Text("\(dice.value)")
                     .fontDesign(.monospaced)
             }
         })
@@ -42,5 +42,5 @@ struct HistoryView: View {
 }
 
 #Preview {
-    HistoryView(rollDicesHistory: [2])
+    HistoryView(rollDicesHistory: HistoryEntry.sampleData())
 }

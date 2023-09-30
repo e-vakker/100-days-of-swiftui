@@ -10,16 +10,16 @@ import Foundation
 extension ContentView {
     @MainActor class ViewModel: ObservableObject {
         @Published var diceSides: Int = 4
-        
         @Published private(set) var total: Int = 0
+        @Published private(set) var isDisabledAddDice = false
+        @Published private(set) var dices: [Dice] = []
+        @Published var rollDicesHistory: [HistoryEntry] = []
         
         let diceSlides = Dice.DiceSides.allCases.map { $0.rawValue }
         
-        @Published private(set) var dices: [Dice] = []
-        
-        @Published private(set) var isDisabledAddDice = false
-        
-        @Published var rollDicesHistory: [Int] = []
+        init() {
+            loadHistory()
+        }
         
         func addDice() {
             guard dices.count < 6 else { return }
@@ -62,7 +62,8 @@ extension ContentView {
         
         func addToHistory(value: Int) {
             if rollDicesHistory.count < 500 {
-                rollDicesHistory.append(value)
+                rollDicesHistory.append(HistoryEntry(value: value))
+                saveHistoryToJson()
             } else {
                 removeHistory()
             }
@@ -70,6 +71,28 @@ extension ContentView {
         
         func removeHistory() {
             rollDicesHistory.removeAll()
+            saveHistoryToJson()
+        }
+        
+        private func saveHistoryToJson() {
+            do {
+                let jsonData = try JSONEncoder().encode(rollDicesHistory)
+                try jsonData.write(to: FileManager.documentDirectoryFileURL)
+                
+            } catch {
+                print("The data was not saved: \(error.localizedDescription)")
+            }
+        }
+        
+        private func loadHistory() {
+            do {
+                let jsonData = try Data(contentsOf: FileManager.documentDirectoryFileURL)
+                if let decoded = try? JSONDecoder().decode([HistoryEntry].self, from: jsonData) {
+                    rollDicesHistory = decoded
+                }
+            } catch {
+                rollDicesHistory = []
+            }
         }
     }
 }

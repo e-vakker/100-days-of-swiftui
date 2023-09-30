@@ -18,6 +18,8 @@
 		ECB1BD812AC7593B006B56DA /* DiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB1BD802AC7593B006B56DA /* DiceView.swift */; };
 		ECB1BD832AC764FE006B56DA /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB1BD822AC764FE006B56DA /* HistoryView.swift */; };
 		ECB1BD872AC779CB006B56DA /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB1BD862AC779CB006B56DA /* FileManager+Extension.swift */; };
+		ECD304CF2AC8278000E49D4F /* HistoryEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD304CE2AC8278000E49D4F /* HistoryEntry.swift */; };
+		ECD304D12AC82CCA00E49D4F /* BlackGrayButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD304D02AC82CCA00E49D4F /* BlackGrayButtonStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		ECB1BD802AC7593B006B56DA /* DiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiceView.swift; sourceTree = "<group>"; };
 		ECB1BD822AC764FE006B56DA /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		ECB1BD862AC779CB006B56DA /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
+		ECD304CE2AC8278000E49D4F /* HistoryEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryEntry.swift; sourceTree = "<group>"; };
+		ECD304D02AC82CCA00E49D4F /* BlackGrayButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackGrayButtonStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,9 +74,11 @@
 				ECB1BD682AC6135C006B56DA /* ContentView.swift */,
 				ECB1BD822AC764FE006B56DA /* HistoryView.swift */,
 				ECB1BD802AC7593B006B56DA /* DiceView.swift */,
+				ECD304CE2AC8278000E49D4F /* HistoryEntry.swift */,
 				ECB1BD7A2AC710B0006B56DA /* ContentView-ViewModel.swift */,
 				ECB1BD782AC70F71006B56DA /* Haptic.swift */,
 				ECB1BD762AC62F28006B56DA /* CustomStepper.swift */,
+				ECD304D02AC82CCA00E49D4F /* BlackGrayButtonStyle.swift */,
 				ECB1BD742AC6202D006B56DA /* Dice.swift */,
 				ECB1BD6A2AC6135D006B56DA /* Assets.xcassets */,
 				ECB1BD6C2AC6135D006B56DA /* Preview Content */,
@@ -159,7 +165,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECB1BD772AC62F28006B56DA /* CustomStepper.swift in Sources */,
+				ECD304CF2AC8278000E49D4F /* HistoryEntry.swift in Sources */,
 				ECB1BD832AC764FE006B56DA /* HistoryView.swift in Sources */,
+				ECD304D12AC82CCA00E49D4F /* BlackGrayButtonStyle.swift in Sources */,
 				ECB1BD7B2AC710B0006B56DA /* ContentView-ViewModel.swift in Sources */,
 				ECB1BD792AC70F71006B56DA /* Haptic.swift in Sources */,
 				ECB1BD692AC6135C006B56DA /* ContentView.swift in Sources */,

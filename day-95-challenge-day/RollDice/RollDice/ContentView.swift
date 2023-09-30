@@ -81,11 +81,12 @@ struct ContentView: View {
                             .font(.title)
                             .foregroundStyle(.white)
                             .frame(maxWidth: .infinity)
-                            .padding(10)
+                            .padding([.top, .bottom], 10)
                             .background(viewModel.dices.isEmpty ? .gray : .black)
                             .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
                         
                     }
+                    .buttonStyle(BlackGrayButtonStyle())
                     .disabled(viewModel.dices.isEmpty ? true : false)
                 }
                 

@@ -7,18 +7,6 @@
 
 import SwiftUI
 
-struct BlackGrayButtonStyle: ButtonStyle {
-    @Environment(\.isEnabled) var isEnabled
-    
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .foregroundStyle(isEnabled ? .black : .gray)
-            .opacity(configuration.isPressed ? 0.5 : 1.0)
-            .padding()
-            .scaleEffect(configuration.isPressed ? 0.98 : 1.0)
-    }
-}
-
 struct CustomStepper: View {
     @Binding var value: Int
     
